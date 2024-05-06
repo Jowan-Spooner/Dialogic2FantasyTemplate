@@ -1,0 +1,134 @@
+[gd_scene load_steps=16 format=3 uid="uid://uxm2fxiayvva"]
+
+[ext_resource type="Texture2D" uid="uid://cliutjp8wum7d" path="res://Assets/simple_frame.png" id="1_8twum"]
+[ext_resource type="Texture2D" uid="uid://dvxjet0oqdwtk" path="res://Assets/Buttons/button_focus.png" id="1_fay2h"]
+[ext_resource type="Texture2D" uid="uid://da0nnohcj18yq" path="res://Assets/Buttons/button_hover.png" id="2_i8jon"]
+[ext_resource type="FontFile" uid="uid://bvlwuy47xwhj0" path="res://Assets/Fonts/CaslonAntique.ttf" id="2_ohk61"]
+[ext_resource type="Texture2D" uid="uid://diuwhfpqqf442" path="res://Assets/Buttons/button_idle.png" id="3_8a8qe"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/TextInput/node_text_input.gd" id="3_h3xe6"]
+[ext_resource type="Texture2D" uid="uid://pobcjnm4wx62" path="res://Assets/slot_number_button_idle.png" id="4_akdnj"]
+[ext_resource type="Script" path="res://DialogicFantasyStyle/FantasyTextInput/fantasy_text_input_layer.gd" id="7_rlx4n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o4a8f"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+texture = ExtResource("3_8a8qe")
+texture_margin_left = 5.0
+texture_margin_top = 4.0
+texture_margin_right = 5.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.447059, 0.447059, 0.447059, 0.588235)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ijveu"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+texture = ExtResource("1_fay2h")
+texture_margin_left = 5.0
+texture_margin_top = 4.0
+texture_margin_right = 5.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.926798, 0.89673, 0.837677, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_liygh"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+texture = ExtResource("2_i8jon")
+texture_margin_left = 5.0
+texture_margin_top = 4.0
+texture_margin_right = 5.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5qvyx"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+texture = ExtResource("3_8a8qe")
+texture_margin_left = 5.0
+texture_margin_top = 4.0
+texture_margin_right = 5.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0xfbn"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+texture = ExtResource("4_akdnj")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jyv2e"]
+texture = ExtResource("1_8twum")
+texture_margin_left = 40.0
+texture_margin_top = 40.0
+texture_margin_right = 40.0
+texture_margin_bottom = 40.0
+
+[sub_resource type="Theme" id="Theme_mfrk5"]
+default_font = ExtResource("2_ohk61")
+default_font_size = 30
+Button/font_sizes/font_size = 25
+Button/styles/disabled = SubResource("StyleBoxTexture_o4a8f")
+Button/styles/focus = SubResource("StyleBoxTexture_ijveu")
+Button/styles/hover = SubResource("StyleBoxTexture_liygh")
+Button/styles/normal = SubResource("StyleBoxTexture_5qvyx")
+Button/styles/pressed = SubResource("StyleBoxTexture_5qvyx")
+LineEdit/colors/caret_color = Color(0.592157, 0.45098, 0.329412, 1)
+LineEdit/colors/font_color = Color(0.235294, 0.117647, 0.0745098, 1)
+LineEdit/colors/font_placeholder_color = Color(0.592157, 0.45098, 0.329412, 1)
+LineEdit/colors/font_selected_color = Color(0.960408, 0.922403, 0.843415, 1)
+LineEdit/colors/selection_color = Color(0.541176, 0.45098, 0.254902, 1)
+LineEdit/styles/normal = SubResource("StyleBoxTexture_0xfbn")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_jyv2e")
+
+[node name="TextInputLayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_mfrk5")
+script = ExtResource("7_rlx4n")
+
+[node name="DialogicNode_TextInput" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -313.0
+offset_top = -239.0
+offset_right = 320.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_h3xe6")
+input_line_edit = NodePath("VBoxContainer/LineEdit")
+text_label = NodePath("VBoxContainer/RichTextLabel")
+confirmation_button = NodePath("VBoxContainer/Button")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogicNode_TextInput"]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogicNode_TextInput/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.936518, 0.876626, 0.752056, 1)
+bbcode_enabled = true
+text = "Please Enter yout name"
+fit_content = true
+
+[node name="LineEdit" type="LineEdit" parent="DialogicNode_TextInput/VBoxContainer"]
+layout_mode = 2
+text = "Default Text"
+
+[node name="Button" type="Button" parent="DialogicNode_TextInput/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Confirm"

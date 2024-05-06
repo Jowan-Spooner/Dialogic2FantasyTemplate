@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=3 uid="uid://5fs634ebaqwq"]
+
+[ext_resource type="Texture2D" uid="uid://cliutjp8wum7d" path="res://Assets/simple_frame.png" id="1_aifg7"]
+[ext_resource type="FontFile" uid="uid://bvlwuy47xwhj0" path="res://Assets/Fonts/CaslonAntique.ttf" id="2_t3xfp"]
+[ext_resource type="Script" path="res://DialogicFantasyStyle/FantasyGlossary/fantasy_glossary_popup_layer.gd" id="3_6gleu"]
+[ext_resource type="FontFile" uid="uid://dgvtbuyfieyfl" path="res://Assets/Fonts/MorrisRomanAlternate-Black.ttf" id="3_u33jm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lt3na"]
+content_margin_left = 27.0
+content_margin_top = 27.0
+content_margin_right = 27.0
+content_margin_bottom = 27.0
+texture = ExtResource("1_aifg7")
+
+[sub_resource type="Theme" id="Theme_w8654"]
+default_font = ExtResource("2_t3xfp")
+default_font_size = 35
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_lt3na")
+
+[sub_resource type="FontVariation" id="FontVariation_rl8ra"]
+base_font = ExtResource("3_u33jm")
+variation_embolden = 0.83
+variation_transform = Transform2D(1, 0.125, 0, 1, 0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3n5n5"]
+font = SubResource("FontVariation_rl8ra")
+font_size = 40
+
+[sub_resource type="FontVariation" id="FontVariation_oyxc8"]
+base_font = ExtResource("2_t3xfp")
+variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
+spacing_space = -3
+
+[sub_resource type="FontVariation" id="FontVariation_mxpv4"]
+base_font = ExtResource("2_t3xfp")
+variation_embolden = 1.56
+variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
+
+[node name="GlossaryPopupLayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_w8654")
+script = ExtResource("3_6gleu")
+
+[node name="Pointer" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Pointer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -265.0
+offset_top = -188.0
+offset_right = 262.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pointer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="Title" type="Label" parent="Pointer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Some Text"
+label_settings = SubResource("LabelSettings_3n5n5")
+
+[node name="Text" type="RichTextLabel" parent="Pointer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.235294, 0.117647, 0.0745098, 1)
+bbcode_enabled = true
+text = "This is a long description."
+fit_content = true
+
+[node name="Extra" type="RichTextLabel" parent="Pointer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(0.235294, 0.117647, 0.0745098, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_oyxc8")
+theme_override_fonts/bold_font = SubResource("FontVariation_mxpv4")
+theme_override_fonts/italics_font = SubResource("FontVariation_oyxc8")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_mxpv4")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+theme_override_font_sizes/italics_font_size = 28
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/mono_font_size = 28
+bbcode_enabled = true
+text = "This is a [b]little[/b] extra."
+fit_content = true

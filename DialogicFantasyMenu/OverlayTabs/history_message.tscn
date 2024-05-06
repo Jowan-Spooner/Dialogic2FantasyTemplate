@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc64cpnyro3vl"]
+
+[ext_resource type="Texture2D" uid="uid://dgk4id6uvrk8s" path="res://Assets/ui_dot.png" id="1_0kkpc"]
+[ext_resource type="Script" path="res://DialogicFantasyMenu/OverlayTabs/history_message.gd" id="1_xih1j"]
+[ext_resource type="FontFile" uid="uid://dgvtbuyfieyfl" path="res://Assets/Fonts/MorrisRomanAlternate-Black.ttf" id="3_nxd8j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_if5jv"]
+font = ExtResource("3_nxd8j")
+font_size = 22
+
+[node name="HistoryMessage" type="VBoxContainer"]
+offset_right = 325.0
+offset_bottom = 109.0
+script = ExtResource("1_xih1j")
+dot_image = ExtResource("1_0kkpc")
+
+[node name="Speaker" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Narrator"
+label_settings = SubResource("LabelSettings_if5jv")
+
+[node name="Message" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "[i]This is a cool [b] text event. Maybe[/b] [/i]it [b]even has multiple lines? Who knows..."
+fit_content = true
+
+[node name="Dot" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+texture = ExtResource("1_0kkpc")
+expand_mode = 1
+stretch_mode = 5

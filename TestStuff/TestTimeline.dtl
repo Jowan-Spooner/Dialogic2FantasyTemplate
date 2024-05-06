@@ -1,0 +1,35 @@
+[background arg="#000000" fade="0.0"]
+[music path="res://TestStuff/Assets/teller-of-the-tales-by-kevin-macleod-from-filmmusic-io.mp3" fade="0.0" volume="0.0"]
+[background arg="res://TestStuff/Assets/Backgrounds/Painterly/outside (2).png" fade="3.0"]
+[wait time="3.0"]
+
+join Astrid 3
+label Beginning
+Astrid: Hey have you gotten the ring?
+join Lucas 1 [ mirrored="true"]
+# [text_input text="Enter your name" var="TextInput" placeholder="My Name" allow_empty="true"]
+Lucas: Yes, I have it with me. Let's go.
+Astrid: Alright, this will take a while
+update Astrid [ mirrored="true"]
+leave Astrid [animation="Slide Out Right"]
+[wait time="0.4"]
+leave Lucas [animation="Slide Out Right"]
+[background arg="res://TestStuff/Assets/Backgrounds/Painterly/outside (3).png" fade="3.0"]
+[wait time="3.0"]
+join Astrid 3 [animation="Slide In Left" mirrored="true"]
+[wait time="0.4"]
+join Lucas (sad) 1 [animation="Slide In Left" length="1.5" mirrored="true"]
+Lucas: Oh my god, is it still far?
+Astrid: No, we're nearly there.
+Lucas (happy): Thank god! I don't think I could go much further.
+update Astrid (happy) [ mirrored="false"]
+Astrid: Yep, me neither. [n] Let's talk about the plan once more.
+Lucas (angry): You think I forgot it already?
+Astrid: No! I just want to be safe, you know...
+Lucas (sad): Yeah... [pause=0.2]Sorry, I didn't want to get angry. This day has been a lot.
+
+# End
+[background arg="#000000" fade="3.0"]
+[clear time="3.0" step="false" background="false"]
+[wait time="3.0"]
+[signal arg="GAME_END"]

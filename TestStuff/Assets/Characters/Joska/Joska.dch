@@ -1,0 +1,47 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(0.294118, 0.454902, 0.0823529, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {},
+"style": ""
+},
+"default_portrait": "angry",
+"description": "",
+"display_name": "Joska",
+"mirror": false,
+"nicknames": [""],
+"offset": Vector2(0, 0),
+"portraits": {
+"angry": {
+"export_overrides": {
+"image": "\"res://Defaults/Characters/Joska/angry.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"happy": {
+"export_overrides": {
+"image": "\"res://Defaults/Characters/Joska/happy.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"sad": {
+"export_overrides": {
+"image": "\"res://Defaults/Characters/Joska/sad.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+"scale": 0.9
+}

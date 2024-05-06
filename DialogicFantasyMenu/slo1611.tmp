@@ -1,0 +1,135 @@
+[gd_scene load_steps=13 format=3 uid="uid://c5d7dt4f1vgyl"]
+
+[ext_resource type="Texture2D" uid="uid://ddxch3tohc47m" path="res://Assets/save_slot_idle.png" id="1_7rqy1"]
+[ext_resource type="Texture2D" uid="uid://b0o47flgxpg86" path="res://Assets/save_slot_hovered.png" id="2_lr2bl"]
+[ext_resource type="Texture2D" uid="uid://c3nmr47g6wj3l" path="res://Assets/Buttons/x_hover.png" id="3_j63iu"]
+[ext_resource type="Script" path="res://DialogicFantasyMenu/slot_button.gd" id="3_rv4sv"]
+[ext_resource type="FontFile" uid="uid://dgvtbuyfieyfl" path="res://Assets/Fonts/MorrisRomanAlternate-Black.ttf" id="4_i0ojq"]
+[ext_resource type="Texture2D" uid="uid://butxjixyel3o" path="res://Assets/Buttons/x_idle.png" id="5_aytet"]
+[ext_resource type="Texture2D" uid="uid://b7ts0ie7gu701" path="res://Assets/save_slot_fg.png" id="5_ddksu"]
+[ext_resource type="Texture2D" uid="uid://d3spryjrv1fp1" path="res://Assets/slot_label.png" id="6_w7dql"]
+[ext_resource type="FontFile" uid="uid://bvlwuy47xwhj0" path="res://Assets/Fonts/CaslonAntique.ttf" id="7_whump"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_miouk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fgogk"]
+font = ExtResource("4_i0ojq")
+font_size = 35
+font_color = Color(0.208073, 0.0722133, 0.0186238, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f4mh5"]
+font = ExtResource("7_whump")
+font_size = 25
+font_color = Color(0.310287, 0.154425, 0.0504885, 1)
+
+[node name="SlotButton" type="TextureButton"]
+clip_children = 2
+offset_right = 460.0
+offset_bottom = 278.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_7rqy1")
+texture_hover = ExtResource("2_lr2bl")
+script = ExtResource("3_rv4sv")
+hover_bg_color = Color(0.835294, 0.635294, 0.466667, 0.176471)
+unhover_bg_color = Color(0.0823529, 0.12549, 0.152941, 0.407843)
+
+[node name="SlotImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_j63iu")
+expand_mode = 1
+
+[node name="CloseButton" type="TextureButton" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -63.0
+offset_top = 22.0
+offset_right = -23.0
+offset_bottom = 59.0
+grow_horizontal = 0
+mouse_filter = 1
+toggle_mode = true
+button_group = SubResource("ButtonGroup_miouk")
+texture_normal = ExtResource("5_aytet")
+texture_pressed = ExtResource("3_j63iu")
+texture_hover = ExtResource("3_j63iu")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ColorTint" type="ColorRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SlotForeground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_ddksu")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 167.0
+offset_right = 314.0
+offset_bottom = 252.0
+texture = ExtResource("6_w7dql")
+expand_mode = 1
+
+[node name="SlotName" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -419.0
+offset_top = -100.0
+offset_bottom = -61.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Empty Slot"
+label_settings = SubResource("LabelSettings_fgogk")
+vertical_alignment = 2
+
+[node name="SlotTime" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -416.0
+offset_top = -73.0
+offset_right = -4.0
+offset_bottom = -36.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "12/10/2023 - 23:10"
+label_settings = SubResource("LabelSettings_f4mh5")
+vertical_alignment = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

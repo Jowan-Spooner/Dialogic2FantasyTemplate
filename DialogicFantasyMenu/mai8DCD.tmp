@@ -1,0 +1,1323 @@
+[gd_scene load_steps=73 format=3 uid="uid://bh6bho0uxfrwf"]
+
+[ext_resource type="Texture2D" uid="uid://cvy321ophmgkn" path="res://Assets/main_menu_background.png" id="1_6pyxn"]
+[ext_resource type="Texture2D" uid="uid://dla06caajfjm8" path="res://Assets/book_overlay.png" id="1_7vbom"]
+[ext_resource type="Script" path="res://DialogicFantasyMenu/MainMenu.gd" id="1_43egg"]
+[ext_resource type="FontFile" uid="uid://dgvtbuyfieyfl" path="res://Assets/Fonts/MorrisRomanAlternate-Black.ttf" id="1_q2k06"]
+[ext_resource type="Texture2D" uid="uid://bpju6sqixesek" path="res://Assets/main_menu_foreground.png" id="2_eypgr"]
+[ext_resource type="FontFile" uid="uid://bvlwuy47xwhj0" path="res://Assets/Fonts/CaslonAntique.ttf" id="2_xy1ki"]
+[ext_resource type="Script" path="res://DialogicFantasyMenu/Ingame_UI.gd" id="3_cyksu"]
+[ext_resource type="Texture2D" uid="uid://dxpxdo6sdi233" path="res://Assets/main_menu_foreground_alt.png" id="3_vnfl4"]
+[ext_resource type="Script" path="res://DialogicFantasyMenu/MenuParalaxEffect.gd" id="4_gqxse"]
+[ext_resource type="Texture2D" uid="uid://drbr4hb27cim3" path="res://Assets/BookButtons/book_button_1_collapsed.png" id="4_pakop"]
+[ext_resource type="Texture2D" uid="uid://bkbkdi7df1leh" path="res://Assets/Buttons/main_button.png" id="5_0cbie"]
+[ext_resource type="Texture2D" uid="uid://bial6y2j6fkmj" path="res://Assets/BookButtons/book_button_1_expanded.png" id="5_eoxca"]
+[ext_resource type="Texture2D" uid="uid://bi1fa7lcvym7m" path="res://Assets/BookButtons/book_button_2_collapsed.png" id="6_5imdr"]
+[ext_resource type="Script" path="res://DialogicFantasyMenu/BookButton.gd" id="6_rv1r2"]
+[ext_resource type="AudioStream" uid="uid://bg7nk8cokw5id" path="res://Assets/Sounds/select_008.ogg" id="6_wd8wi"]
+[ext_resource type="Texture2D" uid="uid://gnyjub2wpqu8" path="res://Assets/BookButtons/book_button_2_expanded.png" id="7_oi13f"]
+[ext_resource type="Texture2D" uid="uid://dgk4id6uvrk8s" path="res://Assets/ui_dot.png" id="7_plupt"]
+[ext_resource type="Texture2D" uid="uid://bdr5agvwr75x3" path="res://Assets/Buttons/choice_idle_background.png" id="8_0jvon"]
+[ext_resource type="Texture2D" uid="uid://diuwhfpqqf442" path="res://Assets/Buttons/button_idle.png" id="8_2vbsh"]
+[ext_resource type="Texture2D" uid="uid://dmb386gmdbdrt" path="res://Assets/BookButtons/book_button_3_collapsed.png" id="8_yqfpt"]
+[ext_resource type="Texture2D" uid="uid://mmj3x8k2sbfi" path="res://Assets/Buttons/choice_hover_background.png" id="9_71tff"]
+[ext_resource type="Texture2D" uid="uid://da0nnohcj18yq" path="res://Assets/Buttons/button_hover.png" id="9_jewxh"]
+[ext_resource type="Texture2D" uid="uid://7o0mm6tn8wm1" path="res://Assets/BookButtons/book_button_3_expanded.png" id="9_yxrj1"]
+[ext_resource type="Texture2D" uid="uid://dvxjet0oqdwtk" path="res://Assets/Buttons/button_focus.png" id="10_4bmr6"]
+[ext_resource type="Texture2D" uid="uid://bt2gt1jwacsx4" path="res://Assets/BookButtons/book_button_4_collapsed.png" id="10_g2eku"]
+[ext_resource type="Texture2D" uid="uid://butxjixyel3o" path="res://Assets/Buttons/x_idle.png" id="10_gskv0"]
+[ext_resource type="Texture2D" uid="uid://c24i8bqblyow6" path="res://Assets/BookButtons/book_button_4_expanded.png" id="11_m3853"]
+[ext_resource type="Texture2D" uid="uid://c3nmr47g6wj3l" path="res://Assets/Buttons/x_hover.png" id="11_tepsd"]
+[ext_resource type="Texture2D" uid="uid://brqt42nvbs5a" path="res://Assets/BookButtons/book_button_5_collapsed.png" id="12_2mqqw"]
+[ext_resource type="Texture2D" uid="uid://d4gttuc8m05fd" path="res://Assets/BookButtons/book_button_5_expanded.png" id="13_0xcss"]
+[ext_resource type="Texture2D" uid="uid://d1fjomf458k3w" path="res://Assets/BookButtons/book_button_6_collapsed.png" id="14_lxqi0"]
+[ext_resource type="Texture2D" uid="uid://dqgi07423jro3" path="res://Assets/BookButtons/book_button_6_expanded.png" id="15_32qlk"]
+[ext_resource type="Texture2D" uid="uid://dfmlbh1tj8lnf" path="res://Assets/slot_number_button_hover.png" id="15_dxqja"]
+[ext_resource type="Texture2D" uid="uid://dhpm3f3p8kyjm" path="res://Assets/BookButtons/book_button_7_collapsed.png" id="16_usbt3"]
+[ext_resource type="Texture2D" uid="uid://do4c2howritu4" path="res://Assets/BookButtons/book_button_7_expanded.png" id="17_2mqio"]
+[ext_resource type="Texture2D" uid="uid://bpjyh18qrm4ce" path="res://Assets/BookButtons/book_button_8_collapsed.png" id="18_p0vj5"]
+[ext_resource type="Texture2D" uid="uid://bo4r6kre3m50w" path="res://Assets/BookButtons/book_button_8_expanded.png" id="19_xr115"]
+[ext_resource type="Script" path="res://DialogicFantasyMenu/SaveTab.gd" id="22_3y2b1"]
+[ext_resource type="Texture2D" uid="uid://pobcjnm4wx62" path="res://Assets/slot_number_button_idle.png" id="22_wti0l"]
+[ext_resource type="Script" path="res://DialogicFantasyMenu/LoadTab.gd" id="32_6s7qx"]
+[ext_resource type="Script" path="res://DialogicFantasyMenu/OptionsTab.gd" id="33_4rhgd"]
+[ext_resource type="Script" path="res://DialogicFantasyMenu/AboutTab.gd" id="33_i8t60"]
+[ext_resource type="Script" path="res://DialogicFantasyMenu/HistoryTab.gd" id="34_2hq4j"]
+[ext_resource type="Script" path="res://DialogicFantasyMenu/HelpTab.gd" id="34_yevvp"]
+[ext_resource type="Script" path="res://DialogicFantasyMenu/GalleryTab.gd" id="35_sueh8"]
+[ext_resource type="PackedScene" uid="uid://b2nwsk43fiagc" path="res://DialogicFantasyMenu/save_load_interface.tscn" id="37_tlxuu"]
+[ext_resource type="PackedScene" uid="uid://bc64cpnyro3vl" path="res://DialogicFantasyMenu/history_message.tscn" id="41_0rfkk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qym2"]
+bg_color = Color(0.235294, 0.121569, 0.0784314, 0.403922)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 10.0
+expand_margin_top = 8.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="FontVariation" id="FontVariation_sxfcm"]
+base_font = ExtResource("1_q2k06")
+spacing_glyph = 8
+
+[sub_resource type="Theme" id="Theme_f8h3t"]
+default_font = SubResource("FontVariation_sxfcm")
+default_font_size = 60
+Button/colors/font_color = Color(0.215686, 0.109804, 0.0705882, 1)
+Button/colors/font_focus_color = Color(0.827451, 0.698039, 0.545098, 1)
+Button/colors/font_hover_color = Color(0.827451, 0.698039, 0.545098, 1)
+Button/colors/font_pressed_color = Color(0.32549, 0.180392, 0.121569, 1)
+Button/font_sizes/font_size = 50
+Button/styles/focus = SubResource("StyleBoxFlat_0qym2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ecpo"]
+content_margin_left = 50.0
+content_margin_top = 12.0
+content_margin_right = 50.0
+content_margin_bottom = 3.0
+texture = ExtResource("5_0cbie")
+modulate_color = Color(0.356865, 0.196452, 0.13564, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_awotx"]
+content_margin_left = 50.0
+content_margin_top = 12.0
+content_margin_right = 50.0
+content_margin_bottom = 3.0
+texture = ExtResource("5_0cbie")
+modulate_color = Color(0.228944, 0.117683, 0.0754791, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1imu3"]
+content_margin_left = 50.0
+content_margin_top = 12.0
+content_margin_right = 50.0
+content_margin_bottom = 3.0
+texture = ExtResource("5_0cbie")
+modulate_color = Color(0.471113, 0.268287, 0.191471, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_abexw"]
+content_margin_left = 0.0
+content_margin_top = 10.0
+content_margin_right = 0.0
+content_margin_bottom = 10.0
+texture = ExtResource("8_0jvon")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yo5oh"]
+content_margin_left = 0.0
+content_margin_top = 10.0
+content_margin_right = 0.0
+content_margin_bottom = 10.0
+texture = ExtResource("9_71tff")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4v8ae"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+texture = ExtResource("8_2vbsh")
+texture_margin_left = 5.0
+texture_margin_top = 4.0
+texture_margin_right = 5.0
+texture_margin_bottom = 4.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fdoem"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+texture = ExtResource("10_4bmr6")
+texture_margin_left = 5.0
+texture_margin_top = 4.0
+texture_margin_right = 5.0
+texture_margin_bottom = 4.0
+expand_margin_right = 10.0
+modulate_color = Color(0.970853, 0.949379, 0.912708, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f67xw"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+texture = ExtResource("9_jewxh")
+texture_margin_left = 5.0
+texture_margin_top = 4.0
+texture_margin_right = 5.0
+texture_margin_bottom = 4.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8rx20"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3fl1t"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+texture = ExtResource("22_wti0l")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="FontVariation" id="FontVariation_ias4l"]
+base_font = ExtResource("2_xy1ki")
+variation_embolden = 1.31
+
+[sub_resource type="FontVariation" id="FontVariation_37lys"]
+base_font = ExtResource("2_xy1ki")
+variation_embolden = 1.64
+variation_transform = Transform2D(1, 0.3, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_wnggv"]
+base_font = ExtResource("2_xy1ki")
+variation_transform = Transform2D(1, 0.3, 0, 1, 0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2xsh7"]
+texture = ExtResource("22_wti0l")
+texture_margin_left = 6.0
+texture_margin_top = 5.0
+texture_margin_right = 6.0
+texture_margin_bottom = 8.0
+axis_stretch_horizontal = 1
+region_rect = Rect2(4, 4, 44, 44)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_waulw"]
+texture = ExtResource("15_dxqja")
+texture_margin_left = 6.0
+texture_margin_top = 5.0
+texture_margin_right = 6.0
+texture_margin_bottom = 8.0
+axis_stretch_horizontal = 1
+region_rect = Rect2(4, 4, 44, 44)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p7nay"]
+content_margin_left = 7.0
+content_margin_right = 7.0
+texture = ExtResource("9_71tff")
+texture_margin_left = 4.0
+texture_margin_top = 6.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 1
+
+[sub_resource type="Theme" id="Theme_etlwy"]
+default_font = ExtResource("2_xy1ki")
+default_font_size = 30
+ButtonLabel/base_type = &"Label"
+ButtonLabel/colors/font_color = Color(0.235294, 0.121569, 0.0784314, 1)
+ButtonLabel/font_sizes/font_size = 55
+ButtonLabel/fonts/font = ExtResource("1_q2k06")
+HSlider/icons/grabber = ExtResource("7_plupt")
+HSlider/icons/grabber_disabled = ExtResource("7_plupt")
+HSlider/icons/grabber_highlight = ExtResource("7_plupt")
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_abexw")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_abexw")
+HSlider/styles/slider = SubResource("StyleBoxTexture_yo5oh")
+Label/colors/font_color = Color(0.235294, 0.121569, 0.0784314, 1)
+OptionButton/colors/font_color = Color(0.235294, 0.121569, 0.0784314, 1)
+OptionButton/colors/font_focus_color = Color(0.235294, 0.121569, 0.0784314, 1)
+OptionButton/colors/font_hover_color = Color(0.173887, 0.0840593, 0.0499803, 1)
+OptionButton/colors/font_pressed_color = Color(0.235294, 0.121569, 0.0784314, 1)
+OptionButton/constants/arrow_margin = 0
+OptionButton/constants/h_separation = 0
+OptionButton/icons/arrow = ExtResource("7_plupt")
+OptionButton/styles/disabled = SubResource("StyleBoxTexture_4v8ae")
+OptionButton/styles/focus = SubResource("StyleBoxTexture_fdoem")
+OptionButton/styles/hover = SubResource("StyleBoxTexture_f67xw")
+OptionButton/styles/normal = SubResource("StyleBoxTexture_4v8ae")
+OptionButton/styles/pressed = SubResource("StyleBoxTexture_f67xw")
+PopupMenu/colors/font_color = Color(0.490196, 0.341176, 0.243137, 1)
+PopupMenu/colors/font_hover_color = Color(0.235294, 0.121569, 0.0784314, 1)
+PopupMenu/styles/hover = SubResource("StyleBoxEmpty_8rx20")
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_3fl1t")
+RichTextLabel/colors/default_color = Color(0.235294, 0.121569, 0.0784314, 1)
+RichTextLabel/font_sizes/bold_font_size = 35
+RichTextLabel/font_sizes/bold_italics_font_size = 35
+RichTextLabel/font_sizes/italics_font_size = 35
+RichTextLabel/font_sizes/mono_font_size = 35
+RichTextLabel/font_sizes/normal_font_size = 35
+RichTextLabel/fonts/bold_font = SubResource("FontVariation_ias4l")
+RichTextLabel/fonts/bold_italics_font = SubResource("FontVariation_37lys")
+RichTextLabel/fonts/italics_font = SubResource("FontVariation_wnggv")
+SectionLabel/base_type = &"Label"
+SectionLabel/colors/font_color = Color(0.235294, 0.121569, 0.0784314, 1)
+SectionLabel/font_sizes/font_size = 35
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_2xsh7")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_waulw")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_waulw")
+VScrollBar/styles/scroll = SubResource("StyleBoxTexture_p7nay")
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_47y3e"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_7y0d3"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_lq46g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w0efh"]
+font_size = 20
+font_color = Color(0.231373, 0.117647, 0.0745098, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ja60t"]
+content_margin_right = 10.0
+
+[node name="Menus" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="CanvasLayer" parent="."]
+script = ExtResource("1_43egg")
+
+[node name="MainMenuBG" type="NinePatchRect" parent="MainMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6pyxn")
+patch_margin_left = 150
+patch_margin_top = 150
+patch_margin_right = 150
+patch_margin_bottom = 150
+
+[node name="MenuElementA" type="TextureRect" parent="MainMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -387.0
+offset_top = -412.0
+offset_right = 388.0
+offset_bottom = 412.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_eypgr")
+expand_mode = 1
+script = ExtResource("4_gqxse")
+
+[node name="MenuElementB" type="TextureRect" parent="MainMenu/MenuElementA"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -230.0
+offset_right = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_vnfl4")
+expand_mode = 1
+
+[node name="MainMenuButtons" type="VBoxContainer" parent="MainMenu/MenuElementA"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.5
+offset_top = -244.0
+offset_right = 219.5
+offset_bottom = 281.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_f8h3t")
+alignment = 1
+
+[node name="MainMenuButtonSound" type="AudioStreamPlayer" parent="MainMenu/MenuElementA/MainMenuButtons"]
+unique_name_in_owner = true
+stream = ExtResource("6_wd8wi")
+volume_db = -17.181
+pitch_scale = 0.7
+max_polyphony = 2
+bus = &"UI_SFX"
+
+[node name="Start" type="Button" parent="MainMenu/MenuElementA/MainMenuButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.827451, 0.698039, 0.545098, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxTexture_6ecpo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_awotx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6ecpo")
+theme_override_styles/focus = SubResource("StyleBoxTexture_1imu3")
+text = "Start"
+
+[node name="Load" type="Button" parent="MainMenu/MenuElementA/MainMenuButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Load"
+flat = true
+
+[node name="Options" type="Button" parent="MainMenu/MenuElementA/MainMenuButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Options"
+flat = true
+
+[node name="Gallery" type="Button" parent="MainMenu/MenuElementA/MainMenuButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Gallery"
+flat = true
+
+[node name="About" type="Button" parent="MainMenu/MenuElementA/MainMenuButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "About"
+flat = true
+
+[node name="Help" type="Button" parent="MainMenu/MenuElementA/MainMenuButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Help"
+flat = true
+
+[node name="Quit" type="Button" parent="MainMenu/MenuElementA/MainMenuButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"
+flat = true
+
+[node name="GUILayer" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 3
+
+[node name="Ingame_UI" type="Control" parent="GUILayer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_etlwy")
+script = ExtResource("3_cyksu")
+
+[node name="ColorRect" type="ColorRect" parent="GUILayer/Ingame_UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -195.0
+offset_top = -99.0
+offset_right = 195.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="BookBG" type="TextureRect" parent="GUILayer/Ingame_UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -745.0
+offset_top = -459.5
+offset_right = 745.0
+offset_bottom = 459.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7vbom")
+
+[node name="CloseButton" type="TextureButton" parent="GUILayer/Ingame_UI/BookBG"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -237.0
+offset_top = 85.5
+offset_right = -173.0
+offset_bottom = 149.5
+grow_horizontal = 0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_47y3e")
+texture_normal = ExtResource("10_gskv0")
+texture_pressed = ExtResource("11_tepsd")
+texture_hover = ExtResource("11_tepsd")
+
+[node name="TabButtons" type="Control" parent="GUILayer/Ingame_UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Button1" type="TextureButton" parent="GUILayer/Ingame_UI/TabButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00274725
+anchor_top = 0.228431
+anchor_right = 0.162088
+anchor_bottom = 0.336275
+offset_left = -915.0
+offset_top = -278.0
+offset_right = -615.0
+offset_bottom = -168.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_47y3e")
+texture_normal = ExtResource("4_pakop")
+texture_pressed = ExtResource("5_eoxca")
+texture_hover = ExtResource("5_eoxca")
+script = ExtResource("6_rv1r2")
+
+[node name="Label" type="Label" parent="GUILayer/Ingame_UI/TabButtons/Button1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -25.0
+offset_right = 89.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"ButtonLabel"
+text = "Save"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="TextureButton" parent="GUILayer/Ingame_UI/TabButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00769231
+anchor_top = 0.329412
+anchor_right = 0.172527
+anchor_bottom = 0.437255
+offset_left = -894.0
+offset_top = -174.0
+offset_right = -594.0
+offset_bottom = -64.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_47y3e")
+texture_normal = ExtResource("6_5imdr")
+texture_pressed = ExtResource("7_oi13f")
+texture_hover = ExtResource("7_oi13f")
+script = ExtResource("6_rv1r2")
+
+[node name="Label" type="Label" parent="GUILayer/Ingame_UI/TabButtons/Button2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -25.0
+offset_right = 89.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"ButtonLabel"
+text = "Load"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button3" type="TextureButton" parent="GUILayer/Ingame_UI/TabButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.447059
+anchor_right = 0.164835
+anchor_bottom = 0.554902
+offset_left = -909.0
+offset_top = -54.0
+offset_right = -609.0
+offset_bottom = 56.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_47y3e")
+texture_normal = ExtResource("8_yqfpt")
+texture_pressed = ExtResource("9_yxrj1")
+texture_hover = ExtResource("9_yxrj1")
+script = ExtResource("6_rv1r2")
+
+[node name="Label" type="Label" parent="GUILayer/Ingame_UI/TabButtons/Button3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -25.0
+offset_right = 89.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"ButtonLabel"
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button4" type="TextureButton" parent="GUILayer/Ingame_UI/TabButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00494506
+anchor_top = 0.570588
+anchor_right = 0.15989
+anchor_bottom = 0.678431
+offset_left = -921.0
+offset_top = 71.0
+offset_right = -621.0
+offset_bottom = 181.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_47y3e")
+texture_normal = ExtResource("10_g2eku")
+texture_pressed = ExtResource("11_m3853")
+texture_hover = ExtResource("11_m3853")
+script = ExtResource("6_rv1r2")
+
+[node name="Label" type="Label" parent="GUILayer/Ingame_UI/TabButtons/Button4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -25.0
+offset_right = 89.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"ButtonLabel"
+text = "History"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button5" type="TextureButton" parent="GUILayer/Ingame_UI/TabButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.830769
+anchor_top = 0.212745
+anchor_right = 0.995604
+anchor_bottom = 0.320588
+offset_left = 602.0
+offset_top = -294.0
+offset_right = 902.0
+offset_bottom = -184.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_47y3e")
+texture_normal = ExtResource("12_2mqqw")
+texture_pressed = ExtResource("13_0xcss")
+texture_hover = ExtResource("13_0xcss")
+script = ExtResource("6_rv1r2")
+
+[node name="Label" type="Label" parent="GUILayer/Ingame_UI/TabButtons/Button5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -25.0
+offset_right = 89.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"ButtonLabel"
+text = "About"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button6" type="TextureButton" parent="GUILayer/Ingame_UI/TabButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.832967
+anchor_top = 0.379412
+anchor_right = 0.997802
+anchor_bottom = 0.487255
+offset_left = 607.0
+offset_top = -126.0
+offset_right = 907.0
+offset_bottom = -16.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_47y3e")
+texture_normal = ExtResource("14_lxqi0")
+texture_pressed = ExtResource("15_32qlk")
+texture_hover = ExtResource("15_32qlk")
+script = ExtResource("6_rv1r2")
+
+[node name="Label" type="Label" parent="GUILayer/Ingame_UI/TabButtons/Button6"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -25.0
+offset_right = 89.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"ButtonLabel"
+text = "Help"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button7" type="TextureButton" parent="GUILayer/Ingame_UI/TabButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.831868
+anchor_top = 0.49902
+anchor_right = 0.996703
+anchor_bottom = 0.606863
+offset_left = 602.0
+offset_right = 902.0
+offset_bottom = 110.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_47y3e")
+texture_normal = ExtResource("16_usbt3")
+texture_pressed = ExtResource("17_2mqio")
+texture_hover = ExtResource("17_2mqio")
+script = ExtResource("6_rv1r2")
+
+[node name="Label" type="Label" parent="GUILayer/Ingame_UI/TabButtons/Button7"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -25.0
+offset_right = 89.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"ButtonLabel"
+text = "Gallery"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button8" type="TextureButton" parent="GUILayer/Ingame_UI/TabButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.833516
+anchor_top = 0.658824
+anchor_right = 0.998352
+anchor_bottom = 0.766667
+offset_left = 607.0
+offset_top = 161.0
+offset_right = 907.0
+offset_bottom = 271.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_47y3e")
+texture_normal = ExtResource("18_p0vj5")
+texture_pressed = ExtResource("19_xr115")
+texture_hover = ExtResource("19_xr115")
+script = ExtResource("6_rv1r2")
+
+[node name="Label" type="Label" parent="GUILayer/Ingame_UI/TabButtons/Button8"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -25.0
+offset_right = 89.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"ButtonLabel"
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tabs" type="Control" parent="GUILayer/Ingame_UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 337.0
+offset_top = 130.0
+offset_right = -337.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SaveTab" type="Control" parent="GUILayer/Ingame_UI/Tabs" node_paths=PackedStringArray("button")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("22_3y2b1")
+button = NodePath("../../TabButtons/Button1")
+
+[node name="TabTitle" type="Label" parent="GUILayer/Ingame_UI/Tabs/SaveTab"]
+visible = false
+layout_mode = 0
+offset_left = 7.0
+offset_top = 71.0
+offset_right = 109.0
+offset_bottom = 119.0
+theme_type_variation = &"ButtonLabel"
+text = "Save"
+
+[node name="SaveMenu" parent="GUILayer/Ingame_UI/Tabs/SaveTab" instance=ExtResource("37_tlxuu")]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 80.0
+offset_right = 1096.0
+offset_bottom = 717.0
+page_button_group = SubResource("ButtonGroup_7y0d3")
+
+[node name="LoadTab" type="Control" parent="GUILayer/Ingame_UI/Tabs" node_paths=PackedStringArray("button")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("32_6s7qx")
+button = NodePath("../../TabButtons/Button2")
+
+[node name="TabTitle" type="Label" parent="GUILayer/Ingame_UI/Tabs/LoadTab"]
+visible = false
+layout_mode = 0
+offset_left = 7.0
+offset_top = 71.0
+offset_right = 109.0
+offset_bottom = 119.0
+theme_type_variation = &"ButtonLabel"
+text = "Load"
+
+[node name="LoadMenu" parent="GUILayer/Ingame_UI/Tabs/LoadTab" instance=ExtResource("37_tlxuu")]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 80.0
+offset_right = 1096.0
+offset_bottom = 717.0
+page_button_group = SubResource("ButtonGroup_lq46g")
+mode = 1
+
+[node name="OptionsTab" type="Control" parent="GUILayer/Ingame_UI/Tabs" node_paths=PackedStringArray("button")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("33_4rhgd")
+button = NodePath("../../TabButtons/Button3")
+
+[node name="TabTitle" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 71.0
+offset_right = 109.0
+offset_bottom = 119.0
+theme_type_variation = &"ButtonLabel"
+text = "Options"
+
+[node name="VBox" type="VBoxContainer" parent="GUILayer/Ingame_UI/Tabs/OptionsTab"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 124.0
+offset_right = 517.0
+offset_bottom = 730.0
+theme_override_constants/separation = 31
+
+[node name="DisplayOption" type="HBoxContainer" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox"]
+layout_mode = 2
+
+[node name="SectionTitle" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox/DisplayOption"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SectionLabel"
+text = "Display"
+
+[node name="Setting_Display" type="OptionButton" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox/DisplayOption"]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Full Screen"
+popup/item_1/id = 1
+
+[node name="TextSpeedOption" type="VBoxContainer" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox"]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="SectionTitle" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox/TextSpeedOption"]
+layout_mode = 2
+theme_type_variation = &"SectionLabel"
+text = "Text Speed"
+
+[node name="Setting_TextSpeed" type="HSlider" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox/TextSpeedOption"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 2.0
+step = 0.05
+value = 1.0
+
+[node name="Label" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox/TextSpeedOption/Setting_TextSpeed"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -7.0
+offset_right = 70.0
+offset_bottom = 30.0
+grow_vertical = 0
+text = "Instant"
+label_settings = SubResource("LabelSettings_w0efh")
+
+[node name="Label2" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox/TextSpeedOption/Setting_TextSpeed"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -8.0
+offset_right = -1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Slow"
+label_settings = SubResource("LabelSettings_w0efh")
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox/TextSpeedOption/Setting_TextSpeed"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -8.0
+offset_right = -1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Default"
+label_settings = SubResource("LabelSettings_w0efh")
+horizontal_alignment = 1
+
+[node name="AutoSpeedOption" type="VBoxContainer" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox"]
+layout_mode = 2
+theme_override_constants/separation = -7
+
+[node name="SectionTitle" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox/AutoSpeedOption"]
+layout_mode = 2
+theme_type_variation = &"SectionLabel"
+text = "Auto-Forward Speed"
+
+[node name="Setting_AutoSpeed" type="HSlider" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox/AutoSpeedOption"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 2.0
+step = 0.05
+value = 1.0
+
+[node name="Label" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox/AutoSpeedOption/Setting_AutoSpeed"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -7.0
+offset_right = 70.0
+offset_bottom = 30.0
+grow_vertical = 0
+text = "Fast"
+label_settings = SubResource("LabelSettings_w0efh")
+
+[node name="Label2" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox/AutoSpeedOption/Setting_AutoSpeed"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -8.0
+offset_right = -1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Slow"
+label_settings = SubResource("LabelSettings_w0efh")
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox/AutoSpeedOption/Setting_AutoSpeed"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -8.0
+offset_right = -1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Default"
+label_settings = SubResource("LabelSettings_w0efh")
+horizontal_alignment = 1
+
+[node name="VBox2" type="VBoxContainer" parent="GUILayer/Ingame_UI/Tabs/OptionsTab"]
+layout_mode = 0
+offset_left = 594.0
+offset_top = 117.0
+offset_right = 1099.0
+offset_bottom = 723.0
+theme_override_constants/separation = 31
+
+[node name="MusicVolume" type="VBoxContainer" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2"]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="SectionTitle" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2/MusicVolume"]
+layout_mode = 2
+theme_type_variation = &"SectionLabel"
+text = "Music Volume"
+
+[node name="Setting_MusicVolume" type="HSlider" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2/MusicVolume"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Label" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2/MusicVolume/Setting_MusicVolume"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -7.0
+offset_right = 70.0
+offset_bottom = 30.0
+grow_vertical = 0
+text = "Muted"
+label_settings = SubResource("LabelSettings_w0efh")
+
+[node name="Label2" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2/MusicVolume/Setting_MusicVolume"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -8.0
+offset_right = -1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Loud"
+label_settings = SubResource("LabelSettings_w0efh")
+horizontal_alignment = 2
+
+[node name="SoundEffectsVolume" type="VBoxContainer" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2"]
+layout_mode = 2
+theme_override_constants/separation = -7
+
+[node name="SectionTitle" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2/SoundEffectsVolume"]
+layout_mode = 2
+theme_type_variation = &"SectionLabel"
+text = "Sound Effects Volume"
+
+[node name="Setting_SoundsVolume" type="HSlider" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2/SoundEffectsVolume"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Label" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2/SoundEffectsVolume/Setting_SoundsVolume"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -7.0
+offset_right = 70.0
+offset_bottom = 30.0
+grow_vertical = 0
+text = "Muted"
+label_settings = SubResource("LabelSettings_w0efh")
+
+[node name="Label2" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2/SoundEffectsVolume/Setting_SoundsVolume"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -8.0
+offset_right = -1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Loud"
+label_settings = SubResource("LabelSettings_w0efh")
+horizontal_alignment = 2
+
+[node name="UI_SoundEffectsVolume" type="VBoxContainer" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2"]
+layout_mode = 2
+theme_override_constants/separation = -7
+
+[node name="SectionTitle" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2/UI_SoundEffectsVolume"]
+layout_mode = 2
+theme_type_variation = &"SectionLabel"
+text = "UI Sounds Volume"
+
+[node name="Setting_UIVolume" type="HSlider" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2/UI_SoundEffectsVolume"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Label" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2/UI_SoundEffectsVolume/Setting_UIVolume"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -7.0
+offset_right = 70.0
+offset_bottom = 30.0
+grow_vertical = 0
+text = "Muted"
+label_settings = SubResource("LabelSettings_w0efh")
+
+[node name="Label2" type="Label" parent="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2/UI_SoundEffectsVolume/Setting_UIVolume"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -8.0
+offset_right = -1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Loud"
+label_settings = SubResource("LabelSettings_w0efh")
+horizontal_alignment = 2
+
+[node name="HistoryTab" type="Control" parent="GUILayer/Ingame_UI/Tabs" node_paths=PackedStringArray("button")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("34_2hq4j")
+button = NodePath("../../TabButtons/Button4")
+
+[node name="TabTitle" type="Label" parent="GUILayer/Ingame_UI/Tabs/HistoryTab"]
+visible = false
+layout_mode = 0
+offset_left = 7.0
+offset_top = 71.0
+offset_right = 109.0
+offset_bottom = 119.0
+theme_type_variation = &"ButtonLabel"
+text = "History"
+
+[node name="Scroll" type="ScrollContainer" parent="GUILayer/Ingame_UI/Tabs/HistoryTab"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 64.0
+offset_right = 529.0
+offset_bottom = 742.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ja60t")
+
+[node name="HistoryList" type="VBoxContainer" parent="GUILayer/Ingame_UI/Tabs/HistoryTab/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HistoryMessage" parent="GUILayer/Ingame_UI/Tabs/HistoryTab/Scroll/HistoryList" instance=ExtResource("41_0rfkk")]
+layout_mode = 2
+
+[node name="HistoryMessage2" parent="GUILayer/Ingame_UI/Tabs/HistoryTab/Scroll/HistoryList" instance=ExtResource("41_0rfkk")]
+layout_mode = 2
+
+[node name="HistoryMessage3" parent="GUILayer/Ingame_UI/Tabs/HistoryTab/Scroll/HistoryList" instance=ExtResource("41_0rfkk")]
+layout_mode = 2
+
+[node name="HistoryMessage4" parent="GUILayer/Ingame_UI/Tabs/HistoryTab/Scroll/HistoryList" instance=ExtResource("41_0rfkk")]
+layout_mode = 2
+
+[node name="HistoryMessage5" parent="GUILayer/Ingame_UI/Tabs/HistoryTab/Scroll/HistoryList" instance=ExtResource("41_0rfkk")]
+layout_mode = 2
+
+[node name="HistoryMessage6" parent="GUILayer/Ingame_UI/Tabs/HistoryTab/Scroll/HistoryList" instance=ExtResource("41_0rfkk")]
+layout_mode = 2
+
+[node name="HistoryMessage7" parent="GUILayer/Ingame_UI/Tabs/HistoryTab/Scroll/HistoryList" instance=ExtResource("41_0rfkk")]
+layout_mode = 2
+
+[node name="AboutTab" type="Control" parent="GUILayer/Ingame_UI/Tabs" node_paths=PackedStringArray("button")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("33_i8t60")
+button = NodePath("../../TabButtons/Button5")
+
+[node name="TabTitle" type="Label" parent="GUILayer/Ingame_UI/Tabs/AboutTab"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 71.0
+offset_right = 109.0
+offset_bottom = 119.0
+theme_type_variation = &"ButtonLabel"
+text = "About"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GUILayer/Ingame_UI/Tabs/AboutTab"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 123.0
+offset_right = 533.0
+offset_bottom = 714.0
+bbcode_enabled = true
+text = "[img][/img]This template was made by Jowan Spooner.
+
+Replace this text with some info about your project!"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="GUILayer/Ingame_UI/Tabs/AboutTab"]
+layout_mode = 0
+offset_left = 587.0
+offset_top = 124.0
+offset_right = 1110.0
+offset_bottom = 715.0
+text = "Maybe you want to give some credits here, or put links to your socials. Go crazy!"
+
+[node name="HelpTab" type="Control" parent="GUILayer/Ingame_UI/Tabs" node_paths=PackedStringArray("button")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("34_yevvp")
+button = NodePath("../../TabButtons/Button6")
+
+[node name="TabTitle" type="Label" parent="GUILayer/Ingame_UI/Tabs/HelpTab"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 71.0
+offset_right = 109.0
+offset_bottom = 119.0
+theme_type_variation = &"ButtonLabel"
+text = "Help"
+
+[node name="GalleryTab" type="Control" parent="GUILayer/Ingame_UI/Tabs" node_paths=PackedStringArray("button")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("35_sueh8")
+button = NodePath("../../TabButtons/Button7")
+
+[node name="TabTitle" type="Label" parent="GUILayer/Ingame_UI/Tabs/GalleryTab"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 71.0
+offset_right = 109.0
+offset_bottom = 119.0
+theme_type_variation = &"ButtonLabel"
+text = "Gallery"
+
+[connection signal="finished" from="MainMenu/MenuElementA/MainMenuButtons/MainMenuButtonSound" to="MainMenu" method="_on_main_menu_button_sound_finished"]
+[connection signal="pressed" from="MainMenu/MenuElementA/MainMenuButtons/Start" to="MainMenu" method="_on_start_pressed"]
+[connection signal="pressed" from="MainMenu/MenuElementA/MainMenuButtons/Load" to="MainMenu" method="_on_load_pressed"]
+[connection signal="pressed" from="MainMenu/MenuElementA/MainMenuButtons/Options" to="MainMenu" method="_on_options_pressed"]
+[connection signal="pressed" from="MainMenu/MenuElementA/MainMenuButtons/Gallery" to="MainMenu" method="_on_gallery_pressed"]
+[connection signal="pressed" from="MainMenu/MenuElementA/MainMenuButtons/About" to="MainMenu" method="_on_about_pressed"]
+[connection signal="pressed" from="MainMenu/MenuElementA/MainMenuButtons/Help" to="MainMenu" method="_on_help_pressed"]
+[connection signal="pressed" from="MainMenu/MenuElementA/MainMenuButtons/Quit" to="MainMenu" method="_on_quit_pressed"]
+[connection signal="pressed" from="GUILayer/Ingame_UI/BookBG/CloseButton" to="GUILayer/Ingame_UI" method="_on_close_button_pressed"]
+[connection signal="pressed" from="GUILayer/Ingame_UI/TabButtons/Button8" to="GUILayer/Ingame_UI" method="_on_button_8_pressed"]
+[connection signal="page_changed" from="GUILayer/Ingame_UI/Tabs/SaveTab/SaveMenu" to="GUILayer/Ingame_UI/Tabs/LoadTab/LoadMenu" method="load_page"]
+[connection signal="page_changed" from="GUILayer/Ingame_UI/Tabs/LoadTab/LoadMenu" to="GUILayer/Ingame_UI/Tabs/SaveTab/SaveMenu" method="load_page"]
+[connection signal="slot_loaded" from="GUILayer/Ingame_UI/Tabs/LoadTab/LoadMenu" to="GUILayer/Ingame_UI/Tabs/LoadTab" method="_on_load_menu_slot_loaded"]
+[connection signal="item_selected" from="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox/DisplayOption/Setting_Display" to="GUILayer/Ingame_UI/Tabs/OptionsTab" method="_on_setting_display_item_selected"]
+[connection signal="value_changed" from="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox/TextSpeedOption/Setting_TextSpeed" to="GUILayer/Ingame_UI/Tabs/OptionsTab" method="_on_setting_text_speed_value_changed"]
+[connection signal="value_changed" from="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox/AutoSpeedOption/Setting_AutoSpeed" to="GUILayer/Ingame_UI/Tabs/OptionsTab" method="_on_setting_auto_speed_value_changed"]
+[connection signal="value_changed" from="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2/MusicVolume/Setting_MusicVolume" to="GUILayer/Ingame_UI/Tabs/OptionsTab" method="_on_setting_music_volume_value_changed"]
+[connection signal="value_changed" from="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2/SoundEffectsVolume/Setting_SoundsVolume" to="GUILayer/Ingame_UI/Tabs/OptionsTab" method="_on_setting_sounds_volume_value_changed"]
+[connection signal="value_changed" from="GUILayer/Ingame_UI/Tabs/OptionsTab/VBox2/UI_SoundEffectsVolume/Setting_UIVolume" to="GUILayer/Ingame_UI/Tabs/OptionsTab" method="_on_setting_ui_volume_value_changed"]

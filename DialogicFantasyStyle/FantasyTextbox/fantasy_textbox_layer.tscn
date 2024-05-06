@@ -1,0 +1,239 @@
+[gd_scene load_steps=19 format=3 uid="uid://0801qvs8ykcb"]
+
+[ext_resource type="FontFile" uid="uid://dgvtbuyfieyfl" path="res://Assets/Fonts/MorrisRomanAlternate-Black.ttf" id="1_25un2"]
+[ext_resource type="Texture2D" uid="uid://uifxwjh483tk" path="res://Assets/textbox.png" id="1_grwlj"]
+[ext_resource type="Script" path="res://DialogicFantasyStyle/FantasyTextbox/fantasy_textbox_layer.gd" id="2_24yp1"]
+[ext_resource type="Texture2D" uid="uid://c6jsp8duh75ox" path="res://Assets/namebox.png" id="3_2n5ih"]
+[ext_resource type="Script" path="res://DialogicFantasyMenu/Helpers/MouseParalaxEffect.gd" id="4_1qnox"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="4_xmdpu"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="5_l755g"]
+[ext_resource type="FontFile" uid="uid://bvlwuy47xwhj0" path="res://Assets/Fonts/CaslonAntique.ttf" id="6_6ipvf"]
+[ext_resource type="Texture2D" uid="uid://dvxjet0oqdwtk" path="res://Assets/Buttons/button_focus.png" id="8_lh3yh"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/autoadvance_indicator.gd" id="9_e7le0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kge3g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfkwx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixudd"]
+content_margin_top = 2.0
+draw_center = false
+border_width_bottom = 2
+border_color = Color(0.235294, 0.117647, 0.0745098, 1)
+
+[sub_resource type="Theme" id="Theme_gmn1i"]
+default_font = ExtResource("6_6ipvf")
+default_font_size = 28
+Button/colors/font_color = Color(0.545098, 0.466667, 0.266667, 1)
+Button/colors/font_disabled_color = Color(0.682353, 0.615686, 0.541176, 1)
+Button/colors/font_hover_color = Color(0.572458, 0.361364, 0.243572, 1)
+Button/colors/font_pressed_color = Color(0.235294, 0.117647, 0.0745098, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_kge3g")
+Button/styles/focus = SubResource("StyleBoxEmpty_lfkwx")
+Button/styles/hover = SubResource("StyleBoxEmpty_kge3g")
+Button/styles/normal = SubResource("StyleBoxEmpty_kge3g")
+Button/styles/pressed = SubResource("StyleBoxFlat_ixudd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m3ekt"]
+content_margin_left = 150.0
+content_margin_right = 150.0
+texture = ExtResource("3_2n5ih")
+
+[sub_resource type="FontVariation" id="FontVariation_0vdu6"]
+base_font = ExtResource("6_6ipvf")
+variation_embolden = 0.59
+
+[sub_resource type="FontVariation" id="FontVariation_k5drm"]
+base_font = ExtResource("6_6ipvf")
+variation_transform = Transform2D(1, 0.265, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_atcwa"]
+base_font = ExtResource("6_6ipvf")
+variation_embolden = 0.59
+variation_transform = Transform2D(1, 0.31, 0, 1, 0, 0)
+
+[node name="TextboxLayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_gmn1i")
+script = ExtResource("2_24yp1")
+
+[node name="TextboxBG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -602.0
+offset_top = -272.0
+offset_right = 599.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("1_grwlj")
+expand_mode = 1
+script = ExtResource("4_1qnox")
+paralax_strength = 10
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="TextboxBG"]
+modulate = Color(0.831373, 0.698039, 0.545098, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 59.0
+offset_top = 1.0
+offset_right = 1147.0
+offset_bottom = 49.0
+mouse_filter = 2
+max_value = 1.0
+step = 0.001
+value = 1.0
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+stretch_margin_bottom = 10
+texture_progress = ExtResource("8_lh3yh")
+script = ExtResource("9_e7le0")
+
+[node name="PanelContainer" type="PanelContainer" parent="TextboxBG"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -148.5
+offset_top = 21.0
+offset_right = 152.5
+offset_bottom = 76.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_m3ekt")
+
+[node name="DialogicNode_NameLabel" type="Label" parent="TextboxBG/PanelContainer" node_paths=PackedStringArray("name_label_root")]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_25un2")
+theme_override_font_sizes/font_size = 48
+text = "Narrator"
+horizontal_alignment = 1
+script = ExtResource("4_xmdpu")
+name_label_root = NodePath("..")
+
+[node name="DialogicNode_DialogText" type="RichTextLabel" parent="TextboxBG" node_paths=PackedStringArray("textbox_root")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 75.0
+offset_top = 69.0
+offset_right = -79.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.235294, 0.117647, 0.0745098, 1)
+theme_override_fonts/bold_font = SubResource("FontVariation_0vdu6")
+theme_override_fonts/italics_font = SubResource("FontVariation_k5drm")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_atcwa")
+theme_override_font_sizes/normal_font_size = 38
+theme_override_font_sizes/bold_font_size = 37
+theme_override_font_sizes/italics_font_size = 38
+theme_override_font_sizes/bold_italics_font_size = 38
+theme_override_font_sizes/mono_font_size = 38
+bbcode_enabled = true
+text = "You've created a new Ren'Py game."
+script = ExtResource("5_l755g")
+textbox_root = NodePath("..")
+hide_when_empty = true
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 18
+alignment = 1
+script = ExtResource("4_1qnox")
+paralax_strength = 5
+
+[node name="Back" type="Button" parent="Buttons"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+disabled = true
+text = "Back"
+
+[node name="History" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "History"
+
+[node name="Skip" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+text = "Skip"
+
+[node name="Auto" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+text = "Auto"
+
+[node name="Save" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Save"
+
+[node name="QSave" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Saves to the last used slot"
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Q.Save"
+
+[node name="QLoad" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Loads from the last saved to slot"
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Q.Load"
+
+[node name="Options" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Options"
+
+[connection signal="pressed" from="Buttons/History" to="." method="_on_history_pressed"]
+[connection signal="toggled" from="Buttons/Skip" to="." method="_on_skip_toggled"]
+[connection signal="toggled" from="Buttons/Auto" to="." method="_on_auto_toggled"]
+[connection signal="pressed" from="Buttons/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Buttons/QSave" to="." method="_on_q_save_pressed"]
+[connection signal="pressed" from="Buttons/QLoad" to="." method="_on_q_load_pressed"]
+[connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]

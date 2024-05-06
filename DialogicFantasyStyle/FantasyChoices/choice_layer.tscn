@@ -1,0 +1,144 @@
+[gd_scene load_steps=16 format=3 uid="uid://rcnr0x50mqy4"]
+
+[ext_resource type="Texture2D" uid="uid://mmj3x8k2sbfi" path="res://Assets/Buttons/choice_hover_background.png" id="1_llcm4"]
+[ext_resource type="Texture2D" uid="uid://bdr5agvwr75x3" path="res://Assets/Buttons/choice_idle_background.png" id="1_qwa7u"]
+[ext_resource type="FontFile" uid="uid://bvlwuy47xwhj0" path="res://Assets/Fonts/CaslonAntique.ttf" id="2_squ2b"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="3_137ki"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/node_button_sound.gd" id="4_d6avm"]
+[ext_resource type="Script" path="res://DialogicFantasyStyle/FantasyChoices/choice_layer.gd" id="4_o163m"]
+[ext_resource type="Script" path="res://DialogicFantasyMenu/Helpers/MouseParalaxEffect.gd" id="5_vnpar"]
+[ext_resource type="AudioStream" uid="uid://bq6ppqistax1k" path="res://Assets/Sounds/switch6.ogg" id="7_wl0qe"]
+[ext_resource type="AudioStream" uid="uid://bl4nkjy5t87ro" path="res://Assets/Sounds/click1.ogg" id="8_fyijk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pnk50"]
+content_margin_left = 15.0
+content_margin_top = 7.0
+content_margin_right = 15.0
+content_margin_bottom = 7.0
+texture = ExtResource("1_llcm4")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+modulate_color = Color(0.481789, 0.481789, 0.481789, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hvpmu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_biovt"]
+content_margin_left = 15.0
+content_margin_top = 7.0
+content_margin_right = 15.0
+content_margin_bottom = 7.0
+texture = ExtResource("1_llcm4")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g5jsn"]
+content_margin_left = 15.0
+content_margin_top = 7.0
+content_margin_right = 15.0
+content_margin_bottom = 7.0
+texture = ExtResource("1_qwa7u")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="Theme" id="Theme_3j6k6"]
+default_font = ExtResource("2_squ2b")
+default_font_size = 40
+Button/colors/font_focus_color = Color(0.898573, 0.737433, 0.585165, 1)
+Button/colors/font_hover_color = Color(0.235294, 0.117647, 0.0745098, 1)
+Button/styles/disabled = SubResource("StyleBoxTexture_pnk50")
+Button/styles/focus = SubResource("StyleBoxEmpty_hvpmu")
+Button/styles/hover = SubResource("StyleBoxTexture_biovt")
+Button/styles/normal = SubResource("StyleBoxTexture_g5jsn")
+Button/styles/pressed = SubResource("StyleBoxTexture_g5jsn")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dhcts"]
+random_pitch = 1.06
+random_volume_offset_db = 1.11
+streams_count = 1
+stream_0/stream = ExtResource("8_fyijk")
+stream_0/weight = 1.0
+
+[node name="ChoiceLayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_3j6k6")
+script = ExtResource("4_o163m")
+
+[node name="Paralax" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_vnpar")
+paralax_strength = 20
+
+[node name="Choices" type="VBoxContainer" parent="Paralax"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -456.0
+offset_top = -361.0
+offset_right = 456.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Choice1" type="Button" parent="Paralax/Choices"]
+layout_mode = 2
+text = "Option 1"
+script = ExtResource("3_137ki")
+
+[node name="Choice2" type="Button" parent="Paralax/Choices"]
+layout_mode = 2
+text = "Option 2"
+script = ExtResource("3_137ki")
+
+[node name="Choice3" type="Button" parent="Paralax/Choices"]
+layout_mode = 2
+text = "Option 3"
+script = ExtResource("3_137ki")
+
+[node name="Choice4" type="Button" parent="Paralax/Choices"]
+layout_mode = 2
+text = "Option 4          
+(Has two lines)"
+script = ExtResource("3_137ki")
+
+[node name="Choice5" type="Button" parent="Paralax/Choices"]
+layout_mode = 2
+text = "Option 5"
+script = ExtResource("3_137ki")
+
+[node name="Choice6" type="Button" parent="Paralax/Choices"]
+visible = false
+layout_mode = 2
+text = "Option 6"
+script = ExtResource("3_137ki")
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="Paralax/Choices"]
+volume_db = -21.478
+bus = &"UI_SFX"
+script = ExtResource("4_d6avm")
+sound_pressed = ExtResource("7_wl0qe")
+sound_hover = SubResource("AudioStreamRandomizer_dhcts")

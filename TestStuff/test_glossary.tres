@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogicGlossary" load_steps=2 format=3 uid="uid://hyh6eismdcy6"]
+
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Glossary/glossary_resource.gd" id="1_6ck38"]
+
+[resource]
+script = ExtResource("1_6ck38")
+entries = {
+"The ring": {
+"alternatives": ["ring"],
+"case_sensitive": true,
+"extra": "Wait is doesn't make me invisible? Dang.",
+"name": "The ring",
+"text": "This mysterious artifact has to be protected at all cost!",
+"title": "The ring of Pygmi Catalpa"
+},
+"ring": "The ring"
+}
+enabled = true
+_translation_id = ""
+_translation_keys = {}
