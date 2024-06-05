@@ -1,6 +1,5 @@
 # Dialogic Fantasy Template
 <img src="https://github.com/Jowan-Spooner/Dialogic2FantasyTemplate/assets/42868150/94a939e3-5253-4b75-bc78-eae3ccc1c094" width="45%"></img><img src="https://github.com/Jowan-Spooner/Dialogic2FantasyTemplate/assets/42868150/5ea8707f-7b7c-4a8b-89fb-5c7b595b31aa" width="45%"></img>
-![grafik]()
 <img src="https://github.com/Jowan-Spooner/Dialogic2FantasyTemplate/assets/42868150/158c7d24-a8b2-4fa0-8655-c308b2b5e807" width="45%"></img> <img src="https://github.com/Jowan-Spooner/Dialogic2FantasyTemplate/assets/42868150/57f0c76f-ded4-488c-9a7f-ecc10ea8fb72" width="45%"></img>
 
 This template provides a fantasy-themed menu and dialogic style. It can be used as a base or as inspiration for your projects.
