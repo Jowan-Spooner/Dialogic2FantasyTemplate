@@ -43,6 +43,9 @@ func open() -> void:
 func _on_dialogic_signal_event(arg: Variant) -> void:
 	if arg == "GAME_END":
 		Dialogic.clear()
+		## Assuming that the end of the game was reached,
+		## We don't want to keep suggestion to "Continue" from the last save.
+		Dialogic.Save.set_latest_slot("")
 		open()
 
 
