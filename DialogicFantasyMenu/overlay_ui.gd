@@ -120,3 +120,8 @@ func _process(_delta: float) -> void:
 	position = relative_mouse_offset * paralax_strength
 
 #endregion
+
+
+func _on_bg_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		close()
