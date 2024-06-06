@@ -5,6 +5,13 @@
 This template provides a fantasy-themed menu and dialogic style. It can be used as a base or as inspiration for your projects.
 The design is very much based on this [cool and free to use design](https://skolaztika.itch.io/fantasy-renpy-gui-template) by [Skolaztika](https://skolaztika.itch.io).
 
+# Content
+- [Features](#features)
+- [Details](#details)
+  - [Main Menu](#menu)
+  - [Style](#style)
+
+
 # Features
 - Full main menu
 - Overlay menu with:
@@ -18,16 +25,10 @@ The design is very much based on this [cool and free to use design](https://skol
 - Warnings when trying to exit with unsaved progress
 
 - Custom Dialogic Style Layers for:
-  - Textbox
-  - Glossary
+  - Textbox (with buttons for History, Skip, Auto, Save, Q.Save, Q.Load, Options)
+  - Hover Glossary
   - Choices
   - Text Input
-
-
-There is a lot of functionality/polish throughout. Some notable effects used:
-- Mouse Paralax (subtle UI-movement when moving the mouse)
-- Button sounds with increasing pitch (try out moving the mouse over the buttons, it's a cool effect)
-- Button tweening (visibly reacting to hover) 
 
 # Details
 If you want to make a game from scratch you can use this project as a base, remove the "TestStuff" folder and just start from there. 
@@ -105,7 +106,7 @@ As in the main menu, `Quit` is hidden on the web.
 ##### Save and Load tabs 
 The save and load tabs both have a very similar UI, so they reuse the same scene `res://DialogicFantasyMenu/SaveLoadInterface/save_load_interface.tscn` (just with a property changed to indicate the different behaviour).
 
-Most importantly this template provides 60 slots. Behind the scenes these are named slot_0 to slot_59. When trying to display them, it just checks if that slot exists and otherwise just displays an empty slot.
+Most importantly this template provides 60 slots. Internally these are named slot_0 to slot_59. When trying to display them, it just checks if that slot exists and otherwise just displays an empty slot.
 ```gdscript
 ## Loads the slots on that page
 func load_page(new_page_index := page_index) -> void:
@@ -121,3 +122,13 @@ func load_page(new_page_index := page_index) -> void:
 It will also store the slot page when switching.
 
 The date+time string used on the slots can be changed in the inspector.
+
+
+##### History tab
+The history tab is rather simple. Most notably:
+- it connects itself to the `Dialogic.History.open_requested` signal
+- when opened it clears the history-item list and repopulates it with instances of the HistoryItem scene.
+
+Most about how the history is displayed is thus defined by the `history_message.gd` script at `res://DialogicFantasyMenu/OverlayTabs/history_message.gd` and it's scene at `res://DialogicFantasyMenu/OverlayTabs/history_message.tscn`.
+This history message allows displaying text events, character join and leave events and choices.
+
