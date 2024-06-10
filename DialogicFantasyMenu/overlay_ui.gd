@@ -1,5 +1,8 @@
 extends Control
 
+## Script that handles opening and closing of the book overlay
+
+
 ## Strength of the paralax effect on the overlay menu.
 @export var paralax_strength := 10
 
@@ -65,6 +68,11 @@ func _input(event:InputEvent) -> void:
 			open_pause_menu()
 
 
+func _on_bg_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		close()
+
+
 func _on_close_button_pressed() -> void:
 	close()
 
@@ -122,6 +130,3 @@ func _process(_delta: float) -> void:
 #endregion
 
 
-func _on_bg_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		close()

@@ -1,13 +1,13 @@
 @tool
 extends DialogicLayoutLayer
 
-
+## Popup glossary layer in a fantasy style.
 
 func _ready() -> void:
+	set_process(false)
+
 	if Engine.is_editor_hint():
 		return
-
-	set_process(false)
 
 	Dialogic.Text.animation_textbox_hide.connect($Pointer.hide)
 	Dialogic.Text.meta_hover_started.connect(_on_dialogic_text_meta_hover_started)

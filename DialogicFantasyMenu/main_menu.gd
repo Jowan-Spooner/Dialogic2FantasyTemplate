@@ -6,6 +6,7 @@ extends CanvasLayer
 ## These sounds get higher pitched, when buttons are hovered in quick succession
 var main_menu_button_pitch_tween: Tween
 
+@export var beginning_timeline := "TestTimeline"
 
 func _ready() -> void:
 	## Connect buttons to hovered, unhovered and pressed
@@ -53,7 +54,7 @@ func _on_dialogic_signal_event(arg: Variant) -> void:
 ################################################################################
 
 func _on_start_pressed() -> void:
-	Dialogic.start("TestTimeline")
+	Dialogic.start(beginning_timeline)
 	hide()
 
 

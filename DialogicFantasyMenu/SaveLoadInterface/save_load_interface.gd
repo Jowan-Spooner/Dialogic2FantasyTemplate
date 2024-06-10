@@ -10,8 +10,6 @@ signal saved
 ## Emitted when the page changed
 signal page_changed(page_index:int)
 
-## The button group of the page buttons
-@export var page_button_group: ButtonGroup
 var slots_per_page := 4
 ## The time string used on all the slots.
 @export var time_string := "{day}/{month}/{year} | {hour}:{minute}"
@@ -25,7 +23,7 @@ var page_index := 0
 
 
 func _ready() -> void:
-	page_button_group.pressed.connect(_on_page_selected)
+	$SlotPageButtons/Page1.button_group.pressed.connect(_on_page_selected)
 	for slot in $Slots.get_children():
 		slot.selected.connect(_on_slot_button_selected.bind(slot.get_index()))
 		slot.time_string = time_string

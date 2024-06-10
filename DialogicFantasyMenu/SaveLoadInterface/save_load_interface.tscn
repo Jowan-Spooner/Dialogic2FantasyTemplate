@@ -5,8 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dfmlbh1tj8lnf" path="res://Assets/slot_number_button_hover.png" id="2_hpaxx"]
 [ext_resource type="Texture2D" uid="uid://pobcjnm4wx62" path="res://Assets/slot_number_button_idle.png" id="3_5d7uh"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_p434r"]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7j4ow"]
 texture = ExtResource("2_hpaxx")
 texture_margin_left = 10.0
@@ -33,6 +31,8 @@ Button/styles/hover = SubResource("StyleBoxTexture_7j4ow")
 Button/styles/normal = SubResource("StyleBoxTexture_ni7cq")
 Button/styles/pressed = SubResource("StyleBoxTexture_7j4ow")
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_p434r"]
+
 [node name="SaveLoadInterface" type="VBoxContainer"]
 offset_left = 32.0
 offset_top = 79.0
@@ -40,7 +40,6 @@ offset_right = 1102.0
 offset_bottom = 690.0
 theme_override_constants/separation = 30
 script = ExtResource("1_u6an1")
-page_button_group = SubResource("ButtonGroup_p434r")
 time_string = "{day}/{month}/{year} - {hour}:{minute}"
 
 [node name="Slots" type="GridContainer" parent="."]

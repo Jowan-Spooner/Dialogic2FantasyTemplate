@@ -12,6 +12,17 @@ extends OverlayUI_Tab
 
 
 func _ready() -> void:
+	## Window mode
+	_on_setting_display_item_selected(Dialogic.Save.get_global_info("display_mode", 0))
+
+	## Autoadvance modifier
+	Dialogic.Inputs.auto_advance.delay_modifier = Dialogic.Save.get_global_info("auto_advance_modifier", 1)
+
+	## Set the input settings
+	Dialogic.Inputs.auto_skip.disable_on_unread_text = Dialogic.Save.get_global_info("skip_unseen_text", false)
+	Dialogic.Inputs.auto_skip.enable_on_visited = Dialogic.Save.get_global_info("skip_auto_seen_text", false)
+
+
 	## Assign the correct default audio buses
 	Dialogic.Audio.base_music_player.bus = "Music"
 	Dialogic.Audio.base_music_player.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -25,11 +36,6 @@ func _ready() -> void:
 		linear_to_db(Dialogic.Save.get_global_info("music_volume", default_music_volume)))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),
 		linear_to_db(Dialogic.Save.get_global_info("sound_effects_volume", default_sound_effects_volume)))
-
-
-	## Set the input settings
-	Dialogic.Inputs.auto_skip.disable_on_unread_text = Dialogic.Save.get_global_info("skip_unseen_text", false)
-	Dialogic.Inputs.auto_skip.enable_on_visited = Dialogic.Save.get_global_info("skip_auto_seen_text", false)
 
 	super()
 
@@ -47,14 +53,14 @@ func _open() -> void:
 
 	%Setting_AutoSpeed.value = Dialogic.Save.get_global_info("auto_advance_modifier", 1)
 
+	## Input Settings
+	%Setting_SkipUnseen.button_pressed = Dialogic.Save.get_global_info("skip_unseen_text", false)
+	%Setting_SkipSeen.button_pressed = Dialogic.Save.get_global_info("skip_auto_seen_text", false)
+
 	## Audio Volume Settings
 	%Setting_MusicVolume.value = Dialogic.Save.get_global_info("music_volume", default_music_volume)
 	%Setting_SoundsVolume.value = Dialogic.Save.get_global_info("sound_effects_volume", default_sound_effects_volume)
 	%Setting_UIVolume.value = Dialogic.Save.get_global_info("ui_sounds_volume", default_ui_sounds_volume)
-
-	## Input Settings
-	%Setting_SkipUnseen.button_pressed = Dialogic.Save.get_global_info("skip_unseen_text", false)
-	%Setting_SkipSeen.button_pressed = Dialogic.Save.get_global_info("skip_auto_seen_text", false)
 
 
 #region SETTINGS CHANGED SIGNALS
@@ -67,9 +73,11 @@ func _on_setting_display_item_selected(index: int) -> void:
 			get_viewport().get_window().mode = Window.MODE_WINDOWED
 		1:
 			get_viewport().get_window().mode = Window.MODE_FULLSCREEN
+	Dialogic.Save.set_global_info("display_mode", index)
 
 
 ## Text Speed Setting
+## Because it is part of the Dialogic settings, this is automatically stored and loaded
 func _on_setting_text_speed_value_changed(value: float) -> void:
 	## We interpret the speed slider as exponential,
 	## to fit a wider range of slow and fast speeds
@@ -80,6 +88,18 @@ func _on_setting_text_speed_value_changed(value: float) -> void:
 func _on_setting_auto_speed_value_changed(value: float) -> void:
 	Dialogic.Inputs.auto_advance.delay_modifier = value
 	Dialogic.Save.set_global_info("auto_advance_modifier", value)
+
+
+
+## Input Settings
+func _on_setting_skip_unseen_toggled(toggled_on: bool) -> void:
+	Dialogic.Inputs.auto_skip.disable_on_unread_text = toggled_on
+	Dialogic.Save.set_global_info("skip_unseen_text", toggled_on)
+
+
+func _on_setting_skip_seen_toggled(toggled_on: bool) -> void:
+	Dialogic.Inputs.auto_skip.enable_on_visited = toggled_on
+	Dialogic.Save.set_global_info("skip_auto_seen_text", toggled_on)
 
 
 ## Audio Volumes
@@ -97,16 +117,5 @@ func _on_setting_sounds_volume_value_changed(value: float) -> void:
 func _on_setting_ui_volume_value_changed(value: float) -> void:
 	Dialogic.Save.set_global_info("ui_sounds_volume", value)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("UI_SFX"), linear_to_db(value))
-
-
-## Input Settings
-func _on_setting_skip_unseen_toggled(toggled_on: bool) -> void:
-	Dialogic.Inputs.auto_skip.disable_on_unread_text = toggled_on
-	Dialogic.Save.set_global_info("skip_unseen_text", toggled_on)
-
-
-func _on_setting_skip_seen_toggled(toggled_on: bool) -> void:
-	Dialogic.Inputs.auto_skip.enable_on_visited = toggled_on
-	Dialogic.Save.set_global_info("skip_auto_seen_text", toggled_on)
 
 #endregion

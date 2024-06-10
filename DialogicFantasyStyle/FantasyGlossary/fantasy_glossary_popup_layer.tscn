@@ -49,6 +49,8 @@ script = ExtResource("3_6gleu")
 
 [node name="Pointer" type="Control" parent="."]
 anchors_preset = 0
+offset_top = 10.0
+offset_bottom = 10.0
 
 [node name="PanelContainer" type="PanelContainer" parent="Pointer"]
 layout_mode = 1

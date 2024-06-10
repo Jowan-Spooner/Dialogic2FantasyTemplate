@@ -13,7 +13,6 @@ func _open() -> void:
 	%PauseQuit.visible = !OS.has_feature("web")
 
 
-
 ## Closes the overlay UI
 func _on_resume_pressed() -> void:
 	%OverlayUI.close()

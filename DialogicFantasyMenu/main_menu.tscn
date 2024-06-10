@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://bh6bho0uxfrwf"]
+[gd_scene load_steps=90 format=3 uid="uid://bh6bho0uxfrwf"]
 
 [ext_resource type="Texture2D" uid="uid://cvy321ophmgkn" path="res://Assets/main_menu_background.png" id="1_6pyxn"]
 [ext_resource type="Texture2D" uid="uid://dla06caajfjm8" path="res://Assets/book_overlay.png" id="1_7vbom"]
@@ -319,10 +319,6 @@ SpecialButton/styles/hover = SubResource("StyleBoxTexture_rj7vk")
 SpecialButton/styles/normal = SubResource("StyleBoxTexture_6ecpo")
 SpecialButton/styles/pressed = SubResource("StyleBoxTexture_rj7vk")
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_lq46g"]
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_7y0d3"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ja60t"]
 content_margin_right = 10.0
 
@@ -446,7 +442,7 @@ patch_margin_right = 150
 patch_margin_bottom = 150
 metadata/_edit_lock_ = true
 
-[node name="Title" type="Label" parent="MainMenu"]
+[node name="Title_Part1" type="Label" parent="MainMenu"]
 offset_left = 146.0
 offset_top = 133.0
 offset_right = 761.0
@@ -457,18 +453,7 @@ autowrap_mode = 3
 script = ExtResource("4_gqxse")
 paralax_strength = 20
 
-[node name="Title2" type="Label" parent="MainMenu"]
-offset_left = 305.0
-offset_top = 381.0
-offset_right = 838.0
-offset_bottom = 828.0
-text = "Game"
-label_settings = SubResource("LabelSettings_js5ao")
-autowrap_mode = 3
-script = ExtResource("4_gqxse")
-paralax_strength = 30
-
-[node name="Title3" type="Label" parent="MainMenu"]
+[node name="Title_Part2" type="Label" parent="MainMenu"]
 offset_left = 167.0
 offset_top = 239.0
 offset_right = 700.0
@@ -478,6 +463,17 @@ label_settings = SubResource("LabelSettings_js5ao")
 autowrap_mode = 3
 script = ExtResource("4_gqxse")
 paralax_strength = 40
+
+[node name="Title_Part3" type="Label" parent="MainMenu"]
+offset_left = 305.0
+offset_top = 381.0
+offset_right = 838.0
+offset_bottom = 528.0
+text = "Game"
+label_settings = SubResource("LabelSettings_js5ao")
+autowrap_mode = 3
+script = ExtResource("4_gqxse")
+paralax_strength = 30
 
 [node name="MenuElementA" type="TextureRect" parent="MainMenu"]
 anchors_preset = 8
@@ -610,10 +606,10 @@ flat = true
 [node name="GUILayer" type="CanvasLayer" parent="."]
 process_mode = 3
 layer = 3
+visible = false
 
 [node name="OverlayUI" type="Control" parent="GUILayer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -630,7 +626,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -195.0
+offset_left = -157.0
 offset_top = -99.0
 offset_right = 195.0
 offset_bottom = 99.0
@@ -1052,7 +1048,6 @@ offset_left = 26.0
 offset_top = 80.0
 offset_right = 1096.0
 offset_bottom = 717.0
-page_button_group = SubResource("ButtonGroup_lq46g")
 mode = 1
 WarningDialog = NodePath("../../../../WarningDialog")
 
@@ -1085,7 +1080,6 @@ offset_left = 26.0
 offset_top = 80.0
 offset_right = 1096.0
 offset_bottom = 717.0
-page_button_group = SubResource("ButtonGroup_7y0d3")
 WarningDialog = NodePath("../../../../WarningDialog")
 
 [node name="HistoryTab" type="Control" parent="GUILayer/OverlayUI/Tabs" node_paths=PackedStringArray("button")]
@@ -1486,7 +1480,6 @@ horizontal_alignment = 2
 
 [node name="HelpTab" type="Control" parent="GUILayer/OverlayUI/Tabs" node_paths=PackedStringArray("button")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1574,6 +1567,7 @@ autowrap_mode = 3
 
 [node name="AboutTab" type="Control" parent="GUILayer/OverlayUI/Tabs" node_paths=PackedStringArray("button")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://0801qvs8ykcb"]
+[gd_scene load_steps=20 format=3 uid="uid://0801qvs8ykcb"]
 
 [ext_resource type="FontFile" uid="uid://dgvtbuyfieyfl" path="res://Assets/Fonts/MorrisRomanAlternate-Black.ttf" id="1_25un2"]
 [ext_resource type="Texture2D" uid="uid://uifxwjh483tk" path="res://Assets/textbox.png" id="1_grwlj"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://bvlwuy47xwhj0" path="res://Assets/Fonts/CaslonAntique.ttf" id="6_6ipvf"]
 [ext_resource type="Texture2D" uid="uid://dvxjet0oqdwtk" path="res://Assets/Buttons/button_focus.png" id="8_lh3yh"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/autoadvance_indicator.gd" id="9_e7le0"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="11_l81vb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kge3g"]
 
@@ -24,7 +25,7 @@ border_color = Color(0.235294, 0.117647, 0.0745098, 1)
 [sub_resource type="Theme" id="Theme_gmn1i"]
 default_font = ExtResource("6_6ipvf")
 default_font_size = 28
-Button/colors/font_color = Color(0.545098, 0.466667, 0.266667, 1)
+Button/colors/font_color = Color(0.561452, 0.460652, 0.239565, 1)
 Button/colors/font_disabled_color = Color(0.682353, 0.615686, 0.541176, 1)
 Button/colors/font_hover_color = Color(0.572458, 0.361364, 0.243572, 1)
 Button/colors/font_pressed_color = Color(0.235294, 0.117647, 0.0745098, 1)
@@ -150,6 +151,10 @@ script = ExtResource("5_l755g")
 textbox_root = NodePath("..")
 hide_when_empty = true
 
+[node name="DialogicNode_TypeSounds" type="AudioStreamPlayer" parent="TextboxBG/DialogicNode_DialogText"]
+bus = &"UI_SFX"
+script = ExtResource("11_l81vb")
+
 [node name="Buttons" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12
@@ -165,15 +170,6 @@ theme_override_constants/separation = 18
 alignment = 1
 script = ExtResource("4_1qnox")
 paralax_strength = 5
-
-[node name="Back" type="Button" parent="Buttons"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 4
-focus_mode = 0
-mouse_default_cursor_shape = 2
-disabled = true
-text = "Back"
 
 [node name="History" type="Button" parent="Buttons"]
 layout_mode = 2
