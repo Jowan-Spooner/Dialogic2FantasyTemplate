@@ -52,8 +52,8 @@ save/encryption_on_exports_only=true
 text/autocolor_names=true
 text/autopauses={}
 glossary/default_case_sensitive=true
-layout/style_list=["res://TestStuff/fantasy_test_style.tres"]
-layout/default_style="res://TestStuff/fantasy_test_style.tres"
+layout/style_list=["res://DialogicFantasyStyle/fantasy_style.tres"]
+layout/default_style="res://DialogicFantasyStyle/fantasy_style.tres"
 variables={
 "TextInput": ""
 }
