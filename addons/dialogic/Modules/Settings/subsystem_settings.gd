@@ -14,9 +14,6 @@ var _connections := {}
 
 #region MAIN METHODS
 ####################################################################################################
-func post_install() -> void:
-	_reload_settings()
-
 
 ## Built-in, called by DialogicGameHandler.
 func clear_game_state(clear_flag:=DialogicGameHandler.ClearFlags.FULL_CLEAR):
@@ -46,8 +43,6 @@ func _set(property:StringName, value:Variant) -> bool:
 func _get(property:StringName) -> Variant:
 	if property in settings:
 		return settings[property]
-	if dialogic.has_subsystem('Save'):
-		return dialogic.Save.get_global_info(property, null)
 	return null
 
 

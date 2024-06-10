@@ -26,7 +26,7 @@ func _ready():
 
 
 func set_text(text:String) -> void:
-	if "text" in get_node(text_label):
+	if get_node(text_label) is Label:
 		get_node(text_label).text = text
 
 
