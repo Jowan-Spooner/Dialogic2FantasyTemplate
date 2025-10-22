@@ -80,6 +80,20 @@ layout/style_directory={
 }
 extensions_folder="res://addons/dialogic_additions"
 animations/cross_fade_default_length=0.5
+audio/channel_defaults={
+"": {
+"audio_bus": "SFX",
+"fade_length": 0.0,
+"loop": false,
+"volume": 0.0
+},
+"music": {
+"audio_bus": "Music",
+"fade_length": 0.0,
+"loop": true,
+"volume": 0.0
+}
+}
 
 [display]
 
