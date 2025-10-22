@@ -6,11 +6,11 @@
 join Astrid 3
 label Beginning
 Astrid: Hey have you gotten the ring?
-join Lucas 1 [ mirrored="true"]
+join Lucas 1 [mirrored="true"]
 # [text_input text="Enter your name" var="TextInput" placeholder="My Name" allow_empty="true"]
 Lucas: Yes, I have it with me. Let's go.
 Astrid: Alright, this will take a while
-update Astrid [ mirrored="true"]
+update Astrid [mirrored="true"]
 leave Astrid [animation="Slide Out Right"]
 [wait time="0.4"]
 leave Lucas [animation="Slide Out Right"]
@@ -22,11 +22,12 @@ join Lucas (sad) 1 [animation="Slide In Left" length="1.5" mirrored="true"]
 Lucas: Oh my god, is it still far?
 Astrid: No, we're nearly there.
 Lucas (happy): Thank god! I don't think I could go much further.
-update Astrid (happy) [ mirrored="false"]
+update Astrid (happy) [mirrored="false"]
 Astrid: Yep, me neither. [n] Let's talk about the plan once more.
 Lucas (angry): You think I forgot it already?
 Astrid: No! I just want to be safe, you know...
 Lucas (sad): Yeah... [pause=0.2]Sorry, I didn't want to get angry. This day has been a lot.
+jump Beginning
 
 # End
 [background arg="#000000" fade="3.0"]

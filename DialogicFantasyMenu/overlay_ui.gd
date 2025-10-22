@@ -128,5 +128,3 @@ func _process(_delta: float) -> void:
 	position = relative_mouse_offset * paralax_strength
 
 #endregion
-
-

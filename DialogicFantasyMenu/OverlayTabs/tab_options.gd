@@ -22,13 +22,6 @@ func _ready() -> void:
 	Dialogic.Inputs.auto_skip.disable_on_unread_text = Dialogic.Save.get_global_info("skip_unseen_text", false)
 	Dialogic.Inputs.auto_skip.enable_on_visited = Dialogic.Save.get_global_info("skip_auto_seen_text", false)
 
-
-	## Assign the correct default audio buses
-	Dialogic.Audio.base_music_player.bus = "Music"
-	Dialogic.Audio.base_music_player.process_mode = Node.PROCESS_MODE_ALWAYS
-
-	Dialogic.Audio.base_sound_player.bus = "SFX"
-
 	## Set the volume from the audio settings
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("UI_SFX"),
 		linear_to_db(Dialogic.Save.get_global_info("ui_sounds_volume", default_ui_sounds_volume)))
