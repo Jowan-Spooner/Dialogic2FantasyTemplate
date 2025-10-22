@@ -8,8 +8,8 @@ extends DialogicVisualEditorField
 
 @export var file_filter := ""
 @export var placeholder := ""
-@export var file_mode : EditorFileDialog.FileMode = EditorFileDialog.FILE_MODE_OPEN_FILE
-var resource_icon:Texture:
+@export var file_mode: EditorFileDialog.FileMode = EditorFileDialog.FILE_MODE_OPEN_FILE
+var resource_icon: Texture:
 	get:
 		return resource_icon
 	set(new_icon):
@@ -21,8 +21,9 @@ var resource_icon:Texture:
 			%Field.theme_type_variation = "LineEditWithIcon"
 
 var max_width := 200
-var current_value : String
-var hide_reset:bool = false
+var current_value: String
+var hide_reset := false
+var show_editing_button := false
 
 #endregion
 
@@ -35,6 +36,9 @@ func _ready() -> void:
 
 	%OpenButton.icon = get_theme_icon("Folder", "EditorIcons")
 	%OpenButton.button_down.connect(_on_OpenButton_pressed)
+
+	%EditButton.icon = get_theme_icon("Edit", "EditorIcons")
+	%EditButton.button_down.connect(_on_EditButton_pressed)
 
 	%ClearButton.icon = get_theme_icon("Reload", "EditorIcons")
 	%ClearButton.button_up.connect(clear_path)
@@ -72,6 +76,8 @@ func _set_value(value: Variant) -> void:
 		%Field.custom_minimum_size.x = 0
 		%Field.expand_to_text_length = true
 
+	%EditButton.visible = show_editing_button and value
+
 	if not %Field.text == text:
 		value_changed.emit(property_name, current_value)
 		%Field.text = text
@@ -92,6 +98,11 @@ func _on_OpenButton_pressed() -> void:
 func _on_file_dialog_selected(path:String) -> void:
 	_set_value(path)
 	value_changed.emit(property_name, path)
+
+
+func _on_EditButton_pressed() -> void:
+	if ResourceLoader.exists(current_value):
+		EditorInterface.inspect_object(load(current_value), "", true)
 
 
 func clear_path() -> void:
@@ -134,6 +145,8 @@ func _on_field_focus_entered() -> void:
 func _on_field_focus_exited() -> void:
 	$FocusStyle.hide()
 	var field_text: String = %Field.text
+	if current_value == field_text or (file_mode != EditorFileDialog.FILE_MODE_OPEN_DIR and current_value.get_file() == field_text):
+		return
 	_on_file_dialog_selected(field_text)
 
 #endregion

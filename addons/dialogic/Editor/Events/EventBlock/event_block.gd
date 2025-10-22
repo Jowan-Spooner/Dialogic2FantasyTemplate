@@ -6,7 +6,7 @@ extends MarginContainer
 signal content_changed()
 
 ## REFERENCES
-var resource : DialogicEvent
+var resource: DialogicEvent
 var editor_reference
 # for choice and condition
 var end_node: Node = null:
@@ -54,6 +54,8 @@ func _ready() -> void:
 
 func initialize_ui() -> void:
 	var _scale := DialogicUtil.get_editor_scale()
+
+	add_theme_constant_override("margin_bottom", DialogicUtil.get_editor_setting("event_block_margin", 0) * _scale)
 
 	$PanelContainer.self_modulate = get_theme_color("accent_color", "Editor")
 
@@ -166,7 +168,9 @@ var FIELD_SCENES := {
 	DialogicEvent.ValueType.VECTOR2: 			"res://addons/dialogic/Editor/Events/Fields/field_vector2.tscn",
 	DialogicEvent.ValueType.VECTOR3: 			"res://addons/dialogic/Editor/Events/Fields/field_vector3.tscn",
 	DialogicEvent.ValueType.VECTOR4: 			"res://addons/dialogic/Editor/Events/Fields/field_vector4.tscn",
-	DialogicEvent.ValueType.COLOR: 				"res://addons/dialogic/Editor/Events/Fields/field_color.tscn"
+	DialogicEvent.ValueType.COLOR: 				"res://addons/dialogic/Editor/Events/Fields/field_color.tscn",
+	DialogicEvent.ValueType.AUDIO_PREVIEW: 		"res://addons/dialogic/Editor/Events/Fields/field_audio_preview.tscn",
+	DialogicEvent.ValueType.IMAGE_PREVIEW:		"res://addons/dialogic/Editor/Events/Fields/field_image_preview.tscn",
 	}
 
 func build_editor(build_header:bool = true, build_body:bool = false) ->  void:
@@ -194,7 +198,7 @@ func build_editor(build_header:bool = true, build_body:bool = false) ->  void:
 
 		### --------------------------------------------------------------------
 		### 1. CREATE A NODE OF THE CORRECT TYPE FOR THE PROPERTY
-		var editor_node : Control
+		var editor_node: Control
 
 		### LINEBREAK
 		if p.name == "linebreak":
@@ -324,6 +328,8 @@ func recalculate_field_visibility() -> void:
 		else:
 			if _evaluate_visibility_condition(p):
 				if p.node != null:
+					if p.node.visible == false and p.has("property"):
+						p.node._set_value(resource.get(p.property))
 					p.node.show()
 				if p.location == 1:
 					has_any_enabled_body_content = true
@@ -353,6 +359,13 @@ func _evaluate_visibility_condition(p: Dictionary) -> bool:
 	return result
 
 
+func get_field_node(property_name:String) -> Node:
+	for i in field_list:
+		if i.get("property", "") == property_name:
+			return i.node
+	return null
+
+
 func _on_resource_ui_update_needed() -> void:
 	for node_info in field_list:
 		if node_info.node and node_info.node.has_method('set_value'):
@@ -374,7 +387,7 @@ func _on_resource_ui_update_needed() -> void:
 
 func _on_collapse_toggled(toggled:bool) -> void:
 	collapsed = toggled
-	var timeline_editor = find_parent('VisualEditor')
+	var timeline_editor: Node = find_parent('VisualEditor')
 	if (timeline_editor != null):
 		# @todo select item and clear selection is marked as "private" in TimelineEditor.gd
 		# consider to make it "public" or add a public helper function
@@ -408,10 +421,10 @@ func _on_EventNode_gui_input(event:InputEvent) -> void:
 	# For opening the context menu
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			var popup :PopupMenu = get_parent().get_parent().get_node('EventPopupMenu')
+			var popup: PopupMenu = get_parent().get_parent().get_node('EventPopupMenu')
 			popup.current_event = self
 			popup.popup_on_parent(Rect2(get_global_mouse_position(),Vector2()))
 			if resource.help_page_path == "":
-				popup.set_item_disabled(2, true)
+				popup.set_item_disabled(4, true)
 			else:
-				popup.set_item_disabled(2, false)
+				popup.set_item_disabled(4, false)

@@ -1,5 +1,6 @@
 @tool
-extends Resource
+@icon("uid://bbea0efx0ybu7")
+extends "res://addons/dialogic/Resources/dialogic_identifiable_resource.gd"
 class_name DialogicCharacter
 
 
@@ -30,8 +31,12 @@ enum TranslatedProperties {
 var _translation_id := ""
 
 
-func _to_string() -> String:
-	return "[{name}:{id}]".format({"name":get_character_name(), "id":get_instance_id()})
+func _get_extension() -> String:
+	return "dch"
+
+
+func _get_resource_name() -> String:
+	return "DialogicCharacter"
 
 
 ## Adds a translation ID to the character.
@@ -125,7 +130,7 @@ func get_display_name_translated() -> String:
 
 ## Returns the best name for this character.
 func get_character_name() -> String:
-	var unique_identifier := DialogicResourceUtil.get_unique_identifier(resource_path)
+	var unique_identifier := get_identifier()
 	if not unique_identifier.is_empty():
 		return unique_identifier
 	if not resource_path.is_empty():
@@ -140,3 +145,13 @@ func get_character_name() -> String:
 ## Uses the default portrait if the given portrait doesn't exist.
 func get_portrait_info(portrait_name:String) -> Dictionary:
 	return portraits.get(portrait_name, portraits.get(default_portrait, {}))
+
+
+## Helper method intended for a simplified creation of portraits at runtime.
+## For more complex needs, manually writing to the portraits dict is recommended.
+func add_portrait(name:String, image:String, scene:= "") -> void:
+	portraits[name] = {
+		"scene": scene,
+		"export_overrides": {
+			"image": image}
+		}

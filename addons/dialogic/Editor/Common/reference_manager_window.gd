@@ -10,7 +10,7 @@ extends Window
 enum Where {EVERYWHERE, BY_CHARACTER, TEXTS_ONLY}
 enum Types {TEXT, VARIABLE, PORTRAIT, CHARACTER_NAME, TIMELINE_NAME}
 
-var icon_button :Button = null
+var icon_button: Button = null
 
 
 func _ready() -> void:
@@ -31,7 +31,7 @@ func _ready() -> void:
 
 	icon_button.add_child(dot)
 
-	var old_changes :Array = DialogicUtil.get_editor_setting('reference_changes', [])
+	var old_changes: Array = DialogicUtil.get_editor_setting('reference_changes', [])
 	if !old_changes.is_empty():
 		broken_manager.reference_changes = old_changes
 
@@ -111,7 +111,9 @@ func add_ref_change(old_name:String, new_name:String, type:Types, where:=Where.T
 		'category':category_name,
 		'character_names':character_names,
 		'texts_only':where == Where.TEXTS_ONLY,
-		'type':type
+		'type':type,
+		'case_sensitive':case_sensitive,
+		'whole_words':whole_words,
 		})
 
 	update_indicator()
@@ -161,13 +163,16 @@ func open() -> void:
 	DialogicResourceUtil.update_directory('dch')
 	DialogicResourceUtil.update_directory('dtl')
 	popup_centered_ratio(0.5)
-	move_to_foreground()
 	grab_focus()
 
 
 func _on_close_requested() -> void:
 	hide()
 	broken_manager.close()
+
+
+func get_change_count() -> int:
+	return len(broken_manager.reference_changes)
 
 
 func update_indicator() -> void:

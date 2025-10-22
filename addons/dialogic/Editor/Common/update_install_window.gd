@@ -1,7 +1,7 @@
 @tool
 extends Control
 
-var current_info : Dictionary = {}
+var current_info := {}
 @onready var editor_view := find_parent('EditorView')
 
 
@@ -19,7 +19,6 @@ func _ready() -> void:
 func open() -> void:
 	get_parent().popup_centered_ratio(0.5)
 	get_parent().mode = Window.MODE_WINDOWED
-	get_parent().move_to_foreground()
 	get_parent().grab_focus()
 
 
@@ -55,7 +54,7 @@ func load_info(info:Dictionary, update_type:int) -> void:
 		%Install.disabled = true
 
 	%UpdateName.text = info.name
-	%Content.text = markdown_to_bbcode('#'+info.body.get_slice('#', 1)).strip_edges()
+	%Content.text = markdown_to_bbcode(info.body).get_slice("\n[font_size", 0).strip_edges()
 	%ShortInfo.text = "Published on "+info.published_at.substr(0, info.published_at.find('T'))+" by "+info.author.login
 	if info.has("html_url"):
 		%ReadFull.uri = info.html_url
@@ -108,7 +107,7 @@ func _on_update_manager_downdload_completed(result:int):
 func _on_resources_reimported(resources:Array) -> void:
 	if is_inside_tree():
 		await get_tree().process_frame
-		get_parent().move_to_foreground()
+		get_parent().grab_focus()
 
 
 func markdown_to_bbcode(text:String) -> String:

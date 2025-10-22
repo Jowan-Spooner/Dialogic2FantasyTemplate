@@ -4,11 +4,18 @@ extends DialogicVisualEditorField
 
 ## Event block field for integers and floats. Improved version of the native spinbox.
 
-@export var allow_string : bool = false
+@export_enum("Float", "Int", "Decible") var mode := 0 :
+	set(new_mode):
+		mode = new_mode
+		match mode:
+			0: use_float_mode() #FLOAT
+			1: use_int_mode() #INT
+			2: use_decibel_mode() #DECIBLE
+@export var allow_string: bool = false
 @export var step: float = 0.1
 @export var enforce_step: bool = true
-@export var min: float = 0
-@export var max: float= 999
+@export var min_value: float = -INF
+@export var max_value: float = INF
 @export var value = 0.0
 @export var prefix: String = ""
 @export var suffix: String = ""
@@ -24,22 +31,14 @@ func _ready() -> void:
 
 	update_prefix(prefix)
 	update_suffix(suffix)
-	$Value_Panel.add_theme_stylebox_override('panel', get_theme_stylebox('panel', 'DialogicEventEdit'))
 
 
 func _load_display_info(info: Dictionary) -> void:
-	match info.get('mode', 0):
-		0: #FLOAT
-			use_float_mode(info.get('step', 0.1))
-		1: #INT
-			use_int_mode(info.get('step', 1))
-		2: #DECIBLE:
-			use_decibel_mode(info.get('step', step))
 
 	for option in info.keys():
 		match option:
-			'min': min = info[option]
-			'max': max = info[option]
+			'min': min_value = info[option]
+			'max': max_value = info[option]
 			'prefix': update_prefix(info[option])
 			'suffix': update_suffix(info[option])
 			'step':
@@ -47,6 +46,7 @@ func _load_display_info(info: Dictionary) -> void:
 				step = info[option]
 			'hide_step_button': %Spin.hide()
 
+	mode = info.get('mode', mode)
 
 func _set_value(new_value: Variant) -> void:
 	_on_value_text_submitted(str(new_value), true)
@@ -61,22 +61,20 @@ func get_value() -> float:
 	return value
 
 
-func use_float_mode(value_step: float = 0.1) -> void:
-	step = value_step
+func use_float_mode() -> void:
 	update_suffix("")
 	enforce_step = false
 
 
-func use_int_mode(value_step: float = 1) -> void:
-	step = value_step
+func use_int_mode() -> void:
 	update_suffix("")
 	enforce_step = true
 
 
-func use_decibel_mode(value_step: float = step) -> void:
-	max = 6
+func use_decibel_mode() -> void:
+	max_value = 6
 	update_suffix("dB")
-	min = -80
+	min_value = -80
 
 #endregion
 
@@ -148,29 +146,38 @@ func _on_gui_input(event: InputEvent) -> void:
 
 func _on_increment_button_down(button: NodePath) -> void:
 	_on_value_text_submitted(str(value+step))
-	_holding_button(1.0, get_node(button) as BaseButton)
+	_holding_button(1, get_node(button) as BaseButton)
 
 
 func _on_decrement_button_down(button: NodePath) -> void:
 	_on_value_text_submitted(str(value-step))
-	_holding_button(-1.0, get_node(button) as BaseButton)
+	_holding_button(-1, get_node(button) as BaseButton)
 
 
 func _on_value_text_submitted(new_text: String, no_signal:= false) -> void:
+	if new_text.is_empty() and not allow_string:
+		new_text = "0.0"
 	if new_text.is_valid_float():
-		var temp: float = min(max(new_text.to_float(), min), max)
-		if !enforce_step:
+		var temp: float = min(max(new_text.to_float(), min_value), max_value)
+		if not enforce_step:
 			value = temp
 		else:
 			value = snapped(temp, step)
 	elif allow_string:
 		value = new_text
-	%Value.text = str(value).pad_decimals(len(str(float(step)-floorf(step)))-2)
+
+	if int(step) == step and step != 0:
+		%Value.text = str(int(value))
+	else:
+		%Value.text = str(value).pad_decimals(
+			max(
+				len(str(float(step)-floorf(step)))-2,
+				len(str(float(value)-floorf(value)))-2,))
 	if not no_signal:
 		value_changed.emit(property_name, value)
 	# Visually disable Up or Down arrow when limit is reached to better indicate a limit has been hit
-	%Spin/Decrement.disabled = value <= min
-	%Spin/Increment.disabled = value >= max
+	%Spin/Decrement.disabled = value <= min_value
+	%Spin/Increment.disabled = value >= max_value
 
 
 # If prefix or suffix was clicked, select the actual value box instead and move the caret to the closest side.
@@ -195,4 +202,3 @@ func _on_value_focus_entered() -> void:
 	%Value.select_all.call_deferred()
 
 #endregion
-
