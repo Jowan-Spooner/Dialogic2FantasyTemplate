@@ -206,14 +206,9 @@ The audio settings require a bit more setup to work:
 - We need an audio bus for every type of sound: SFX, UI_SFX, Music. [More about audio buses here](https://docs.godotengine.org/en/stable/tutorials/audio/audio_buses.html). In this template they are setup to be sub-busses of the Master bus. This could allow you to control the master volume on a separate slider, though I chose not to.
 ![grafik](https://github.com/Jowan-Spooner/Dialogic2FantasyTemplate/assets/42868150/3a103f10-1b50-42cc-859a-476ecf518e3c)
 
-- We need to make sure dialogic uses these busses. Because of this we run this in _ready:
-```gdscript
-Dialogic.Audio.base_music_player.bus = "Music"
-Dialogic.Audio.base_music_player.process_mode = Node.PROCESS_MODE_ALWAYS
+- We need to make sure dialogic uses these busses. We do so in the dialogic settings audio section:
+![grafik](https://github.com/user-attachments/assets/9c6abc5d-6e45-441c-907c-2c3955e59f3f)
 
-Dialogic.Audio.base_sound_player.bus = "SFX"
-```
-*Note that I wanted background music to keep playing when opening the in-game menu overlay, so I set the `process_mode` to `ALWAYS`.*
 Also we will need to make sure that the TypeSound node has it's bus set to UI_SFX. In this template no type-sounds are setup though you might want to add them, or a character might have custom type sounds.
 
 If all is setup we can set the volume like this:
