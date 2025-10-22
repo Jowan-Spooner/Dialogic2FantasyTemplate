@@ -10,9 +10,9 @@ var mode := Modes.FULL_HIGHLIGHTING
 ## RegEx's
 var word_regex := RegEx.new()
 var region_regex := RegEx.new()
-var number_regex := RegEx.create_from_string("(\\d|\\.)+")
-var shortcode_regex := RegEx.create_from_string("\\W*\\[(?<id>\\w*)(?<args>[^\\]]*)?")
-var shortcode_param_regex := RegEx.create_from_string('((?<parameter>[^\\s=]*)\\s*=\\s*"(?<value>([^=]|\\\\=)*)(?<!\\\\)")')
+var number_regex := RegEx.create_from_string(r"(\d|\.)+")
+var shortcode_regex := RegEx.create_from_string(r"\W*\[(?<id>\w*)(?<args>[^\]]*)?")
+var shortcode_param_regex := RegEx.create_from_string(r'((?<parameter>[^\s=]*)\s*=\s*"(?<value>([^=]|\\=)*)(?<!\\)")')
 
 ## Colors
 var normal_color : Color
@@ -30,19 +30,24 @@ var custom_syntax_events := []
 var text_event :DialogicTextEvent = null
 
 
-func _init():
-	# Load colors from editor settings
-	if DialogicUtil.get_dialogic_plugin():
-		var editor_settings = DialogicUtil.get_dialogic_plugin().get_editor_interface().get_editor_settings()
-		normal_color = editor_settings.get('text_editor/theme/highlighting/text_color')
-		translation_id_color = editor_settings.get('text_editor/theme/highlighting/comment_color')
+func _init() -> void:
+	update_colors()
+	DialogicUtil.get_dialogic_plugin().get_editor_interface().get_base_control().theme_changed.connect(update_colors)
 
-		code_flow_color = editor_settings.get("text_editor/theme/highlighting/control_flow_keyword_color")
-		boolean_operator_color = code_flow_color.lightened(0.5)
-		variable_color = editor_settings.get('text_editor/theme/highlighting/engine_type_color')
-		string_color = editor_settings.get('text_editor/theme/highlighting/string_color')
-		character_name_color = editor_settings.get('text_editor/theme/highlighting/symbol_color').lerp(normal_color, 0.3)
-		character_portrait_color = character_name_color.lerp(normal_color, 0.5)
+
+func update_colors() -> void:
+	if not DialogicUtil.get_dialogic_plugin():
+		return
+	var editor_settings = DialogicUtil.get_dialogic_plugin().get_editor_interface().get_editor_settings()
+	normal_color = editor_settings.get('text_editor/theme/highlighting/text_color')
+	translation_id_color = editor_settings.get('text_editor/theme/highlighting/comment_color')
+
+	code_flow_color = editor_settings.get("text_editor/theme/highlighting/control_flow_keyword_color")
+	boolean_operator_color = code_flow_color.lightened(0.5)
+	variable_color = editor_settings.get('text_editor/theme/highlighting/engine_type_color')
+	string_color = editor_settings.get('text_editor/theme/highlighting/string_color')
+	character_name_color = editor_settings.get('text_editor/theme/highlighting/symbol_color').lerp(normal_color, 0.3)
+	character_portrait_color = character_name_color.lerp(normal_color, 0.5)
 
 
 func _get_line_syntax_highlighting(line:int) -> Dictionary:

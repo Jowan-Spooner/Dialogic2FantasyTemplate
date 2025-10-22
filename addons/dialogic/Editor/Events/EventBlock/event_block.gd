@@ -40,7 +40,7 @@ var current_indent_level := 1
 #region UI AND LOGIC INITIALIZATION
 ################################################################################
 
-func _ready():
+func _ready() -> void:
 	if get_parent() is SubViewport:
 		return
 
@@ -64,9 +64,11 @@ func initialize_ui() -> void:
 
 	# Expand Button
 	%ToggleBodyVisibilityButton.icon = get_theme_icon("CodeFoldedRightArrow", "EditorIcons")
-	%ToggleBodyVisibilityButton.modulate = get_theme_color("contrast_color_1", "Editor")
-	%ToggleBodyVisibilityButton.set("theme_override_colors/icon_normal_color", get_theme_color("contrast_color_1", "Editor"))
-	%ToggleBodyVisibilityButton.set("theme_override_colors/icon_pressed_color", get_theme_color("contrast_color_1", "Editor"))
+	%ToggleBodyVisibilityButton.set("theme_override_colors/icon_normal_color", get_theme_color("contrast_color_2", "Editor"))
+	%ToggleBodyVisibilityButton.set("theme_override_colors/icon_hover_color", get_theme_color("accent_color", "Editor"))
+	%ToggleBodyVisibilityButton.set("theme_override_colors/icon_pressed_color", get_theme_color("contrast_color_2", "Editor"))
+	%ToggleBodyVisibilityButton.set("theme_override_colors/icon_hover_pressed_color", get_theme_color("accent_color", "Editor"))
+	%ToggleBodyVisibilityButton.add_theme_stylebox_override('hover_pressed', StyleBoxEmpty.new())
 
 	# Icon Panel
 	%IconPanel.tooltip_text = resource.event_name
@@ -216,6 +218,7 @@ func build_editor(build_header:bool = true, build_body:bool = false) ->  void:
 		elif p.field_type == resource.ValueType.BUTTON:
 			editor_node = Button.new()
 			editor_node.text = p.display_info.text
+			editor_node.tooltip_text = p.display_info.get('tooltip', '')
 			if typeof(p.display_info.icon) == TYPE_ARRAY:
 				editor_node.icon = callv('get_theme_icon', p.display_info.icon)
 			else:

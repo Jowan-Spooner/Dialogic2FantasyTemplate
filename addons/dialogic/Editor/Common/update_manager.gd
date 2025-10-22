@@ -92,7 +92,7 @@ func get_release_tag_info(release_tag:String) -> Dictionary:
 	release_tag = release_tag.substr(0, release_tag.find('('))
 	release_tag = release_tag.to_lower()
 
-	var regex := RegEx.create_from_string('(?<major>\\d+\\.\\d+)(-(?<state>alpha|beta)-)?(?(2)(?<stateversion>\\d*)|\\.(?<minor>\\d*))?')
+	var regex := RegEx.create_from_string(r"(?<major>\d+\.\d+)(-(?<state>alpha|beta)-)?(?(2)(?<stateversion>\d*)|\.(?<minor>\d*))?")
 
 	var result: RegExMatch = regex.search(release_tag)
 	if !result:
@@ -162,7 +162,7 @@ func _on_DownloadRequest_completed(result:int, response_code:int, headers:Packed
 ######################	SOME UI MANAGEMENT #####################################
 ################################################################################
 
-func setup_version_indicator():
+func setup_version_indicator() -> void:
 	version_indicator = %Sidebar.get_node('%CurrentVersion')
 	version_indicator.pressed.connect($Window/UpdateInstallWindow.open)
 	version_indicator.text = get_current_version()

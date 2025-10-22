@@ -263,7 +263,6 @@ mouse_filter = 2
 [node name="DialogTextPanel" type="PanelContainer" parent="Anchor/AnimationParent/Sizer"]
 unique_name_in_owner = true
 self_modulate = Color(0.00784314, 0.00784314, 0.00784314, 0.843137)
-custom_minimum_size = Vector2(300, 50)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -284,7 +283,6 @@ theme_override_font_sizes/bold_font_size = 15
 theme_override_font_sizes/italics_font_size = 15
 theme_override_font_sizes/bold_italics_font_size = 15
 bbcode_enabled = true
-text = "Some default text"
 visible_characters_behavior = 1
 script = ExtResource("3_4634k")
 textbox_root = NodePath("..")
