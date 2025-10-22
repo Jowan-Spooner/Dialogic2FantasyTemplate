@@ -152,7 +152,7 @@ They are then loaded on ready (as an example) like this:
 Dialogic.Inputs.auto_advance.delay_modifier = Dialogic.Save.get_global_info("auto_advance_modifier", 1)
 ```
 
-**Display Setting**
+##### Display Setting
 The display setting switches the window mode between window and full-screen:
 ```gdscript
 func _on_setting_display_item_selected(index: int) -> void:
@@ -163,7 +163,7 @@ func _on_setting_display_item_selected(index: int) -> void:
 			get_viewport().get_window().mode = Window.MODE_FULLSCREEN
 ```
 
-**Text Speed setting**
+##### Text Speed setting
 The text speed setting is a (multiplier) for text related things (like letter speed, pauses, etc.). That means at 0 the text will be instant, at 1 use the default and at higher values go slower. 
 The text speed setting is part of the Settings subsystem and is thus automatically saved and loaded.
 As a small trick I've made it so that the value of the slider is actually self-multiplied, making for a wider range of values (while still having the default at the middle):
@@ -178,7 +178,7 @@ Then of course we need to invert this trick when loading the value into the UI o
 %Setting_TextSpeed.value = sqrt(Dialogic.Settings.get_setting("text_speed", 1))
 ```
 
-**Autoadvance Speed setting**
+##### Autoadvance Speed setting
 The autoadvance delay modifier is part of the autoadvance class on the Input subsystem. It's also a multiplier. I suggest to play around with the autoadvance delay values in the dialogic settings to find a good default. It's still nice to allow the players to modify the speed. The implementation is very simple:
 
 ```gdscript
@@ -187,7 +187,7 @@ func _on_setting_auto_speed_value_changed(value: float) -> void:
 	Dialogic.Save.set_global_info("auto_advance_modifier", value)
 ```
 
-**Auto-Skip settings**
+##### Auto-Skip settings
 These are simply settings on the autoskip class on the Input subsystem. For these to work you will have to enable the "Seen events history" in the Dialogic settings > History section!
 ```gdscript
 func _on_setting_skip_unseen_toggled(toggled_on: bool) -> void:
@@ -200,7 +200,7 @@ func _on_setting_skip_seen_toggled(toggled_on: bool) -> void:
 	Dialogic.Save.set_global_info("skip_auto_seen_text", toggled_on)
 ```
 
-**Audio settings**
+##### Audio settings
 Three separate audio-sliders allow adjusting the volume of the music, sound effects and UI sound effects (such as type-sounds and button hover sounds). If you read through this, you should be able to create a separate slider for voice audio if you need it.
 The audio settings require a bit more setup to work:
 - We need an audio bus for every type of sound: SFX, UI_SFX, Music. [More about audio buses here](https://docs.godotengine.org/en/stable/tutorials/audio/audio_buses.html). In this template they are setup to be sub-busses of the Master bus. This could allow you to control the master volume on a separate slider, though I chose not to.
