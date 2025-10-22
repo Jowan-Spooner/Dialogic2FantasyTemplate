@@ -13,7 +13,7 @@ Astrid: Alright, this will take a while
 update Astrid [mirrored="true"]
 leave Astrid [animation="Slide To Right"]
 [wait time="0.4"]
-leave Lucas [animation="Slide To Right" ]
+leave Lucas [animation="Slide To Right"]
 [background arg="res://TestStuff/Assets/Backgrounds/Painterly/outside (3).png" fade="3.0"]
 [wait time="3.0"]
 join Astrid right [animation="Slide From Left" mirrored="true"]
@@ -27,10 +27,8 @@ Astrid: Yep, me neither. [n] Let's talk about the plan once more.
 Lucas (angry): You think I forgot it already?
 Astrid: No! I just want to be safe, you know...
 Lucas (sad): Yeah... [pause=0.2]Sorry, I didn't want to get angry. This day has been a lot.
-jump Beginning
 
 # End
 [background arg="#000000" fade="3.0"]
-[clear time="3.0" step="false" background="false"]
 [wait time="3.0"]
 [signal arg="GAME_END"]
