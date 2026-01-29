@@ -1,16 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://0801qvs8ykcb"]
+[gd_scene format=3 uid="uid://0801qvs8ykcb"]
 
 [ext_resource type="FontFile" uid="uid://dgvtbuyfieyfl" path="res://Assets/Fonts/MorrisRomanAlternate-Black.ttf" id="1_25un2"]
 [ext_resource type="Texture2D" uid="uid://uifxwjh483tk" path="res://Assets/textbox.png" id="1_grwlj"]
-[ext_resource type="Script" path="res://DialogicFantasyStyle/FantasyTextbox/fantasy_textbox_layer.gd" id="2_24yp1"]
+[ext_resource type="Script" uid="uid://0h8mdjs5prnw" path="res://DialogicFantasyStyle/FantasyTextbox/fantasy_textbox_layer.gd" id="2_24yp1"]
 [ext_resource type="Texture2D" uid="uid://c6jsp8duh75ox" path="res://Assets/namebox.png" id="3_2n5ih"]
-[ext_resource type="Script" path="res://DialogicFantasyMenu/Helpers/MouseParalaxEffect.gd" id="4_1qnox"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="4_xmdpu"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="5_l755g"]
+[ext_resource type="Script" uid="uid://1anqv51svrm0" path="res://Assets/Helpers/MouseParalaxEffect.gd" id="4_1qnox"]
+[ext_resource type="Script" uid="uid://bak74s0kcr0ao" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="4_xmdpu"]
+[ext_resource type="Script" uid="uid://drhfq6rmdeuri" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="5_l755g"]
 [ext_resource type="FontFile" uid="uid://bvlwuy47xwhj0" path="res://Assets/Fonts/CaslonAntique.ttf" id="6_6ipvf"]
 [ext_resource type="Texture2D" uid="uid://dvxjet0oqdwtk" path="res://Assets/Buttons/button_focus.png" id="8_lh3yh"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/autoadvance_indicator.gd" id="9_e7le0"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="11_l81vb"]
+[ext_resource type="Script" uid="uid://bklme8oymw6h7" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/autoadvance_indicator.gd" id="9_e7le0"]
+[ext_resource type="Script" uid="uid://dpv2dfiv5dhmr" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="11_l81vb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kge3g"]
 
@@ -44,16 +44,16 @@ texture = ExtResource("3_2n5ih")
 base_font = ExtResource("6_6ipvf")
 variation_embolden = 0.59
 
-[sub_resource type="FontVariation" id="FontVariation_k5drm"]
-base_font = ExtResource("6_6ipvf")
-variation_transform = Transform2D(1, 0.265, 0, 1, 0, 0)
-
 [sub_resource type="FontVariation" id="FontVariation_atcwa"]
 base_font = ExtResource("6_6ipvf")
 variation_embolden = 0.59
 variation_transform = Transform2D(1, 0.31, 0, 1, 0, 0)
 
-[node name="TextboxLayer" type="Control"]
+[sub_resource type="FontVariation" id="FontVariation_k5drm"]
+base_font = ExtResource("6_6ipvf")
+variation_transform = Transform2D(1, 0.265, 0, 1, 0, 0)
+
+[node name="TextboxLayer" type="Control" unique_id=1963307387]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,7 +64,7 @@ mouse_filter = 2
 theme = SubResource("Theme_gmn1i")
 script = ExtResource("2_24yp1")
 
-[node name="TextboxBG" type="TextureRect" parent="."]
+[node name="TextboxBG" type="TextureRect" parent="." unique_id=2103152765]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -83,7 +83,7 @@ expand_mode = 1
 script = ExtResource("4_1qnox")
 paralax_strength = 10
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="TextboxBG"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="TextboxBG" unique_id=577107416]
 modulate = Color(0.831373, 0.698039, 0.545098, 1)
 show_behind_parent = true
 layout_mode = 0
@@ -103,7 +103,7 @@ stretch_margin_bottom = 10
 texture_progress = ExtResource("8_lh3yh")
 script = ExtResource("9_e7le0")
 
-[node name="PanelContainer" type="PanelContainer" parent="TextboxBG"]
+[node name="PanelContainer" type="PanelContainer" parent="TextboxBG" unique_id=2008306674]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -116,7 +116,7 @@ grow_horizontal = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_m3ekt")
 
-[node name="DialogicNode_NameLabel" type="Label" parent="TextboxBG/PanelContainer" node_paths=PackedStringArray("name_label_root")]
+[node name="DialogicNode_NameLabel" type="Label" parent="TextboxBG/PanelContainer" unique_id=672133714 node_paths=PackedStringArray("name_label_root")]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_25un2")
 theme_override_font_sizes/font_size = 48
@@ -125,7 +125,7 @@ horizontal_alignment = 1
 script = ExtResource("4_xmdpu")
 name_label_root = NodePath("..")
 
-[node name="DialogicNode_DialogText" type="RichTextLabel" parent="TextboxBG" node_paths=PackedStringArray("textbox_root")]
+[node name="DialogicNode_DialogText" type="RichTextLabel" parent="TextboxBG" unique_id=223006414 node_paths=PackedStringArray("textbox_root")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -138,12 +138,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0.235294, 0.117647, 0.0745098, 1)
 theme_override_fonts/bold_font = SubResource("FontVariation_0vdu6")
-theme_override_fonts/italics_font = SubResource("FontVariation_k5drm")
 theme_override_fonts/bold_italics_font = SubResource("FontVariation_atcwa")
+theme_override_fonts/italics_font = SubResource("FontVariation_k5drm")
 theme_override_font_sizes/normal_font_size = 38
 theme_override_font_sizes/bold_font_size = 37
-theme_override_font_sizes/italics_font_size = 38
 theme_override_font_sizes/bold_italics_font_size = 38
+theme_override_font_sizes/italics_font_size = 38
 theme_override_font_sizes/mono_font_size = 38
 bbcode_enabled = true
 text = "You've created a new Ren'Py game."
@@ -151,11 +151,11 @@ script = ExtResource("5_l755g")
 textbox_root = NodePath("..")
 hide_when_empty = true
 
-[node name="DialogicNode_TypeSounds" type="AudioStreamPlayer" parent="TextboxBG/DialogicNode_DialogText"]
+[node name="DialogicNode_TypeSounds" type="AudioStreamPlayer" parent="TextboxBG/DialogicNode_DialogText" unique_id=128668752]
 bus = &"UI_SFX"
 script = ExtResource("11_l81vb")
 
-[node name="Buttons" type="HBoxContainer" parent="."]
+[node name="Buttons" type="HBoxContainer" parent="." unique_id=1587231666]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -171,14 +171,14 @@ alignment = 1
 script = ExtResource("4_1qnox")
 paralax_strength = 5
 
-[node name="History" type="Button" parent="Buttons"]
+[node name="History" type="Button" parent="Buttons" unique_id=1709774641]
 layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0
 mouse_default_cursor_shape = 2
 text = "History"
 
-[node name="Skip" type="Button" parent="Buttons"]
+[node name="Skip" type="Button" parent="Buttons" unique_id=24032133]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -187,7 +187,7 @@ mouse_default_cursor_shape = 2
 toggle_mode = true
 text = "Skip"
 
-[node name="Auto" type="Button" parent="Buttons"]
+[node name="Auto" type="Button" parent="Buttons" unique_id=1919550315]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -196,14 +196,14 @@ mouse_default_cursor_shape = 2
 toggle_mode = true
 text = "Auto"
 
-[node name="Save" type="Button" parent="Buttons"]
+[node name="Save" type="Button" parent="Buttons" unique_id=609475777]
 layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0
 mouse_default_cursor_shape = 2
 text = "Save"
 
-[node name="QSave" type="Button" parent="Buttons"]
+[node name="QSave" type="Button" parent="Buttons" unique_id=1320609126]
 layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "Saves to the last used slot"
@@ -211,7 +211,7 @@ focus_mode = 0
 mouse_default_cursor_shape = 2
 text = "Q.Save"
 
-[node name="QLoad" type="Button" parent="Buttons"]
+[node name="QLoad" type="Button" parent="Buttons" unique_id=1686117125]
 layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "Loads from the last saved to slot"
@@ -219,7 +219,7 @@ focus_mode = 0
 mouse_default_cursor_shape = 2
 text = "Q.Load"
 
-[node name="Options" type="Button" parent="Buttons"]
+[node name="Options" type="Button" parent="Buttons" unique_id=951179738]
 layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0

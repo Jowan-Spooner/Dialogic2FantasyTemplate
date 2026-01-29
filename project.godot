@@ -8,12 +8,16 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Dialogic Fantasy Template"
 config/version="1.0"
 run/main_scene="res://DialogicFantasyMenu/main_menu.tscn"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://template_icon.svg"
 
 [autoload]
@@ -94,11 +98,13 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
+portraits/default_portrait="res://addons/dialogic/Modules/HighlightPortrait/simple_highlight_portrait.tscn"
+text/split_at_new_lines=false
 
 [display]
 
-window/size/viewport_width=1820
-window/size/viewport_height=1020
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="canvas_items"

@@ -1,12 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://rcnr0x50mqy4"]
+[gd_scene format=3 uid="uid://rcnr0x50mqy4"]
 
 [ext_resource type="Texture2D" uid="uid://mmj3x8k2sbfi" path="res://Assets/Buttons/choice_hover_background.png" id="1_llcm4"]
 [ext_resource type="Texture2D" uid="uid://bdr5agvwr75x3" path="res://Assets/Buttons/choice_idle_background.png" id="1_qwa7u"]
 [ext_resource type="FontFile" uid="uid://bvlwuy47xwhj0" path="res://Assets/Fonts/CaslonAntique.ttf" id="2_squ2b"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="3_137ki"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/node_button_sound.gd" id="4_d6avm"]
-[ext_resource type="Script" path="res://DialogicFantasyStyle/FantasyChoices/choice_layer.gd" id="4_o163m"]
-[ext_resource type="Script" path="res://DialogicFantasyMenu/Helpers/MouseParalaxEffect.gd" id="5_vnpar"]
+[ext_resource type="Script" uid="uid://bldt7xlfum7ov" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="3_137ki"]
+[ext_resource type="Script" uid="uid://b1stj4ljd2vo7" path="res://addons/dialogic/Modules/Choice/node_button_sound.gd" id="4_d6avm"]
+[ext_resource type="Script" uid="uid://c1rjcsrs56xxr" path="res://DialogicFantasyStyle/FantasyChoices/choice_layer.gd" id="4_o163m"]
+[ext_resource type="Script" uid="uid://1anqv51svrm0" path="res://Assets/Helpers/MouseParalaxEffect.gd" id="5_vnpar"]
 [ext_resource type="AudioStream" uid="uid://bq6ppqistax1k" path="res://Assets/Sounds/switch6.ogg" id="7_wl0qe"]
 [ext_resource type="AudioStream" uid="uid://bl4nkjy5t87ro" path="res://Assets/Sounds/click1.ogg" id="8_fyijk"]
 
@@ -62,9 +62,8 @@ random_pitch = 1.06
 random_volume_offset_db = 1.11
 streams_count = 1
 stream_0/stream = ExtResource("8_fyijk")
-stream_0/weight = 1.0
 
-[node name="ChoiceLayer" type="Control"]
+[node name="ChoiceLayer" type="Control" unique_id=989068752]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,7 +74,7 @@ mouse_filter = 2
 theme = SubResource("Theme_3j6k6")
 script = ExtResource("4_o163m")
 
-[node name="Paralax" type="Control" parent="."]
+[node name="Paralax" type="Control" parent="." unique_id=2018933826]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,7 +85,7 @@ mouse_filter = 2
 script = ExtResource("5_vnpar")
 paralax_strength = 20
 
-[node name="Choices" type="VBoxContainer" parent="Paralax"]
+[node name="Choices" type="VBoxContainer" parent="Paralax" unique_id=777909585]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -104,39 +103,39 @@ mouse_filter = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Choice1" type="Button" parent="Paralax/Choices"]
+[node name="Choice1" type="Button" parent="Paralax/Choices" unique_id=1070547337]
 layout_mode = 2
 text = "Option 1"
 script = ExtResource("3_137ki")
 
-[node name="Choice2" type="Button" parent="Paralax/Choices"]
+[node name="Choice2" type="Button" parent="Paralax/Choices" unique_id=2118688522]
 layout_mode = 2
 text = "Option 2"
 script = ExtResource("3_137ki")
 
-[node name="Choice3" type="Button" parent="Paralax/Choices"]
+[node name="Choice3" type="Button" parent="Paralax/Choices" unique_id=1804817484]
 layout_mode = 2
 text = "Option 3"
 script = ExtResource("3_137ki")
 
-[node name="Choice4" type="Button" parent="Paralax/Choices"]
+[node name="Choice4" type="Button" parent="Paralax/Choices" unique_id=53173875]
 layout_mode = 2
 text = "Option 4          
 (Has two lines)"
 script = ExtResource("3_137ki")
 
-[node name="Choice5" type="Button" parent="Paralax/Choices"]
+[node name="Choice5" type="Button" parent="Paralax/Choices" unique_id=1112360834]
 layout_mode = 2
 text = "Option 5"
 script = ExtResource("3_137ki")
 
-[node name="Choice6" type="Button" parent="Paralax/Choices"]
+[node name="Choice6" type="Button" parent="Paralax/Choices" unique_id=1043854232]
 visible = false
 layout_mode = 2
 text = "Option 6"
 script = ExtResource("3_137ki")
 
-[node name="ButtonSound" type="AudioStreamPlayer" parent="Paralax/Choices"]
+[node name="ButtonSound" type="AudioStreamPlayer" parent="Paralax/Choices" unique_id=1146271009]
 volume_db = -21.478
 bus = &"UI_SFX"
 script = ExtResource("4_d6avm")

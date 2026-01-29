@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogicStyle" load_steps=18 format=3 uid="uid://dbnvp4luftliv"]
+[gd_resource type="Resource" script_class="DialogicStyle" format=3 uid="uid://dbnvp4luftliv"]
 
 [ext_resource type="PackedScene" uid="uid://0801qvs8ykcb" path="res://DialogicFantasyStyle/FantasyTextbox/fantasy_textbox_layer.tscn" id="1_u3jvk"]
 [ext_resource type="Script" uid="uid://dv08k6ljua6fm" path="res://addons/dialogic/Resources/dialogic_style.gd" id="1_y8tpk"]

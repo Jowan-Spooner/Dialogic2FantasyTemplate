@@ -31,8 +31,8 @@ The design is very much based on this [cool and free to use design](https://skol
   - Text Input
 
 # Details
-If you want to make a game from scratch you can use this project as a base, remove the "TestStuff" folder and just start from there. 
-More realisticly though, you've probably already setup a portrait and would like to incorporate some or all of this template into that. Whatever the case, I'll try to explain some things here, as it's always hard to work with someone elses code and implementation.
+If you want to make a game from scratch you can use this project as a base, remove the "TestStuff" folder and just start from there.
+More realisticly though, you've probably already setup a project and would like to incorporate some or all of this template into that. Whatever the case, I'll try to explain some things here, as it's always hard to work with someone elses code and implementation.
 
 # Menu
 Most of the menu GUI is one big scene at `res://DialogicFantasyMenu/main_menu.tscn`. This scene should be setup as your projects main scene.
@@ -40,6 +40,13 @@ This scene has two parts, the Main Menu inside the `MainMenu` canvas layer and t
 -> [More on canvas layers here](https://docs.godotengine.org/en/stable/tutorials/2d/canvas_layers.html)
 
 ![grafik](https://github.com/Jowan-Spooner/Dialogic2FantasyTemplate/assets/42868150/b7c1921e-e8cd-4539-904b-a4e0940f7653)
+
+### Copy instructions
+To add the menu into your project do the following:
+	- Copy the `Assets` folder into your project
+	- Copy the `DialogicFantasyMenu` folder into your project
+For certain settings, some further setup is required, and some parts (like the Title or Credits) should be adjusted.
+Read further to get a better understanding of the main menu scene and its design.
 
 ## Main Menu
 The **main menu script** handles all the functionality of the main menu buttons and their hover effects (sound and growing).
@@ -87,8 +94,8 @@ The `OverlayUI` script mostly handles opening and closing the "book". This inclu
 - Some helper methods to open a specific tab
 
 #### Pause tab
-The pause tab is realy simple. It's the thing that will be shown when you press ESC during the gameplay. 
-The most interesting thing is the interaction with the WarningDialog node. When you try to quit or go to the main menu, the pause menu will check whether there might be unsaved progress and if so, displays a "do you really want to" dialog. 
+The pause tab is realy simple. It's the thing that will be shown when you press ESC during the gameplay.
+The most interesting thing is the interaction with the WarningDialog node. When you try to quit or go to the main menu, the pause menu will check whether there might be unsaved progress and if so, displays a "do you really want to" dialog.
 ```gdscript
 ## Calls [method go_to_main_menu] or presents a warning, if there is unsaved progress.
 func _on_main_menu_pressed() -> void:
@@ -103,7 +110,7 @@ func _on_main_menu_pressed() -> void:
 *Note that the `%Overlay.has_just_saved` value is always set to false when opening the overlay and only set to true when saving.*
 As in the main menu, `Quit` is hidden on the web.
 
-#### Save and Load tabs 
+#### Save and Load tabs
 The save and load tabs both have a very similar UI, so they reuse the same scene `res://DialogicFantasyMenu/SaveLoadInterface/save_load_interface.tscn` (just with a property changed to indicate the different behaviour).
 
 Most importantly this template provides 60 slots. Internally these are named slot_0 to slot_59. When trying to display them, it just checks if that slot exists and otherwise just displays an empty slot.
@@ -133,7 +140,7 @@ Most about how the history is displayed is thus defined by the `history_message.
 This history message allows displaying text events, character join and leave events and choices.
 
 #### Options tab
-One of the more interesting tabs! 
+One of the more interesting tabs!
 The options tab allows changing these game settings:
 - Display (Windowed/Fullscreen)
 - Text Speed
@@ -164,7 +171,7 @@ func _on_setting_display_item_selected(index: int) -> void:
 ```
 
 ##### Text Speed setting
-The text speed setting is a (multiplier) for text related things (like letter speed, pauses, etc.). That means at 0 the text will be instant, at 1 use the default and at higher values go slower. 
+The text speed setting is a (multiplier) for text related things (like letter speed, pauses, etc.). That means at 0 the text will be instant, at 1 use the default and at higher values go slower.
 The text speed setting is part of the Settings subsystem and is thus automatically saved and loaded.
 As a small trick I've made it so that the value of the slider is actually self-multiplied, making for a wider range of values (while still having the default at the middle):
 ```gdscript
@@ -206,7 +213,7 @@ The audio settings require a bit more setup to work:
 - We need an audio bus for every type of sound: SFX, UI_SFX, Music. [More about audio buses here](https://docs.godotengine.org/en/stable/tutorials/audio/audio_buses.html). In this template they are setup to be sub-busses of the Master bus. This could allow you to control the master volume on a separate slider, though I chose not to.
 ![grafik](https://github.com/Jowan-Spooner/Dialogic2FantasyTemplate/assets/42868150/3a103f10-1b50-42cc-859a-476ecf518e3c)
 
-- We need to make sure dialogic uses these busses. Because of this we run this in _ready:
+- We need to make sure dialogic uses these busses. We do this in the Dialogic Settings audio section:
 ```gdscript
 Dialogic.Audio.base_music_player.bus = "Music"
 Dialogic.Audio.base_music_player.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -238,6 +245,15 @@ The style (saved at `res://DialogicFantasyStyle/fantasy_style.tres`) is made up 
 - Fantasy Choices
 - Fantasy Glossary
 - Fantasy Text Input
+
+### Copy instructions
+To add the menu into your project do the following:
+	- Copy the `Assets` folder into your project
+	- Copy the `DialogicFantasyStyle` folder into your project
+For certain settings, some further setup is required, and some parts (like the Title or Credits) should be adjusted.
+Read further to get a better understanding of the style layer scenes and their design.
+Keep in mind that these layers were designed with a resolution of 1920x1080 and window-stretch-mode set to `canvas_item`.
+
 
 ## Fantasy textbox
 This textbox provides a lot of functionality besides displaying text.
